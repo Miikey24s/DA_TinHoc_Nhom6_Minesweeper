@@ -36,7 +36,7 @@
             // 
             // btnDe
             // 
-            this.btnDe.Location = new System.Drawing.Point(311, 197);
+            this.btnDe.Location = new System.Drawing.Point(105, 87);
             this.btnDe.Name = "btnDe";
             this.btnDe.Size = new System.Drawing.Size(178, 75);
             this.btnDe.TabIndex = 1;
@@ -45,7 +45,7 @@
             // 
             // btnVua
             // 
-            this.btnVua.Location = new System.Drawing.Point(311, 278);
+            this.btnVua.Location = new System.Drawing.Point(294, 214);
             this.btnVua.Name = "btnVua";
             this.btnVua.Size = new System.Drawing.Size(178, 75);
             this.btnVua.TabIndex = 2;
@@ -64,7 +64,7 @@
             // btnKho
             // 
             this.btnKho.AutoSize = true;
-            this.btnKho.Location = new System.Drawing.Point(311, 359);
+            this.btnKho.Location = new System.Drawing.Point(465, 87);
             this.btnKho.Name = "btnKho";
             this.btnKho.Size = new System.Drawing.Size(178, 75);
             this.btnKho.TabIndex = 5;
