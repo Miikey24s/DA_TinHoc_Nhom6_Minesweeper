@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public partial class Form1 : Form
+    public partial class ChonCapDo : Form
     {
-        public Form1()
+        public ChonCapDo()
         {
             InitializeComponent();
         }
