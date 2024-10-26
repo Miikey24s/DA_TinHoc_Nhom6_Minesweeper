@@ -102,6 +102,7 @@
             this.btnKhách.TabIndex = 7;
             this.btnKhách.Text = "Khách";
             this.btnKhách.UseVisualStyleBackColor = true;
+            this.btnKhách.Click += new System.EventHandler(this.btnKhách_Click);
             // 
             // DangKy_DangNhap
             // 
