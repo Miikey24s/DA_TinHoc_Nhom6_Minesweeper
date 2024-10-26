@@ -16,7 +16,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         {
             InitializeComponent();
         }
-        //chuyen sang giao dien choi game
         private void btnDe_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -46,5 +45,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
             this.Close();
         }
+
+            private void btnTroLai_Click(object sender, EventArgs e)
+            {
+                this.Hide();
+                TrangChu TrangChu = new TrangChu();
+                TrangChu.ShowDialog();
+                this.Close();
+            }
     }
 }
