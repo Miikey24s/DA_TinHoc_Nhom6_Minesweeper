@@ -103,6 +103,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ChonCapDo";
             this.Text = "ten";
+            this.Load += new System.EventHandler(this.ChonCapDo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

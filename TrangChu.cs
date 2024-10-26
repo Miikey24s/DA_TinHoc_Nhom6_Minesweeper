@@ -26,15 +26,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         private void btnHuongDan_Click(object sender, EventArgs e)
         {
-               MessageBox.Show("Hướng dẫn chơi DÒ MÌN ĐÊ!!!:\n" +
-                                "- Mục tiêu: Dò ra số mìn có trong ô.\n" +
-                                "- Cách chơi:\n" +
-                                "  * Click trái: Phá ô dò mìn.\n" +
-                                "  * Click phải: Đánh dấu mìn bằng cờ đỏ.\n" +
-                                "- Quy tắc:\n" +
-                                "  * Tính toán để cho không dẫm vào mìn.\n" +
-                                "  * Hãy nhìn vào các con số hiện lên để biết ở đâu có mìn nhé!\n"+
-                                "  * Phá đảo tất cả các ô không dẫm phải mìn để thắng.", "Hướng dẫn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

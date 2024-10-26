@@ -12,46 +12,42 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class ChonCapDo : Form
     {
+        public int capDo = -1;
         public ChonCapDo()
         {
             InitializeComponent();
         }
-        private void btnDe_Click(object sender, EventArgs e)
+
+        private void MoveForm()
         {
             this.Hide();
-            PlayGame playGameDe = new PlayGame();
+            PlayGame playGameDe = new PlayGame(capDo);
             playGameDe.ShowDialog();
-            playGameDe.capDoGame = 1;
-
             this.Close();
+        }
+        //chuyen sang giao dien choi game
+        private void btnDe_Click(object sender, EventArgs e)
+        {
+            capDo = 0;
+            MoveForm();
+            
         }
 
         private void btnVua_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            PlayGame playGameDe = new PlayGame();
-            playGameDe.ShowDialog();
-            playGameDe.capDoGame = 2;
-
-            this.Close();
+            capDo = 1;
+            MoveForm();
         }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            PlayGame playGameDe = new PlayGame();
-            playGameDe.ShowDialog();
-            playGameDe.capDoGame = 3;
-
-            this.Close();
+            capDo = 2;
+            MoveForm();
         }
 
-            private void btnTroLai_Click(object sender, EventArgs e)
-            {
-                this.Hide();
-                TrangChu TrangChu = new TrangChu();
-                TrangChu.ShowDialog();
-                this.Close();
-            }
+        private void ChonCapDo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
