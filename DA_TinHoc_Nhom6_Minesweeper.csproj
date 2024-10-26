@@ -52,10 +52,19 @@
     <Compile Include="ChonCapDo.Designer.cs">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DangKy_DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangKy_DangNhap.Designer.cs">
+      <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChonCapDo.resx">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangKy_DangNhap.resx">
+      <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
