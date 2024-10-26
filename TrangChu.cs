@@ -10,23 +10,17 @@ using System.Windows.Forms;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public partial class DangKy_DangNhap : Form
+    public partial class TrangChu : Form
     {
-        public DangKy_DangNhap()
+        public TrangChu()
         {
             InitializeComponent();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnKhách_Click(object sender, EventArgs e)
+        private void btnBatDau_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu trangChu = new TrangChu();
-            trangChu.ShowDialog();
+            ChonCapDo chonCapDo = new ChonCapDo();
+            chonCapDo.ShowDialog();
             this.Close();
         }
     }

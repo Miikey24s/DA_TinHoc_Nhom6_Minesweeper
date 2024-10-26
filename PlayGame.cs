@@ -10,24 +10,22 @@ using System.Windows.Forms;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public partial class DangKy_DangNhap : Form
+    public partial class PlayGame : Form
     {
-        public DangKy_DangNhap()
+        public int capDoGame = 0;
+
+        public PlayGame()
         {
             InitializeComponent();
         }
-
-        private void label2_Click(object sender, EventArgs e)
+        public void VeBanCo()
         {
-
+            MessageBox.Show("cap do game: " + capDoGame.ToString());
         }
-
-        private void btnKhách_Click(object sender, EventArgs e)
+        public int GetLevelGame()
         {
-            this.Hide();
-            TrangChu trangChu = new TrangChu();
-            trangChu.ShowDialog();
-            this.Close();
+            return this.capDoGame;
         }
     }
+
 }
