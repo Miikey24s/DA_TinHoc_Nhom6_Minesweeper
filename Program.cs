@@ -17,7 +17,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new DangKy_DangNhap());
-            Application.Run(new TrangChu());
+            Application.Run(new ChonCapDo());
         }
     }
 }

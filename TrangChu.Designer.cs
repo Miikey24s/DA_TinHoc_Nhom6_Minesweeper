@@ -65,7 +65,7 @@
             // btnHuongDan
             // 
             this.btnHuongDan.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnHuongDan.Location = new System.Drawing.Point(359, 362);
+            this.btnHuongDan.Location = new System.Drawing.Point(358, 362);
             this.btnHuongDan.Margin = new System.Windows.Forms.Padding(4);
             this.btnHuongDan.Name = "btnHuongDan";
             this.btnHuongDan.Size = new System.Drawing.Size(277, 64);
