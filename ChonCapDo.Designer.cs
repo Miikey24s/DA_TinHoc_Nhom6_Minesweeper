@@ -98,6 +98,7 @@
             this.Controls.Add(this.btnDe);
             this.Name = "ChonCapDo";
             this.Text = "ten";
+            this.Load += new System.EventHandler(this.ChonCapDo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
