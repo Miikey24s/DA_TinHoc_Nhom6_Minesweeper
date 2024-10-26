@@ -12,16 +12,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class PlayGame : Form
     {
-        public PlayGame()
+        public PlayGame(int capDo)
         {
             InitializeComponent();
-            VeBanCo();
+            VeBanCo(capDo);
         }
 
-        public void VeBanCo()
+        public void VeBanCo(int capDo)
         {
-            KichThuoc size = new KichThuoc();
-            int sizeBanCo = size.GetSizeBanCo();
+            KichThuoc sizeBanCo = new KichThuoc();
+            sizeBanCo.ChonSizeBanCo(capDo);
+            int size = sizeBanCo.GetSizeBanCo();
 
             Bom bom = new Bom();
             int bombs = bom.GetBombs();
@@ -31,9 +32,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 Width = 0,
                 Location = new Point(0, 0)
             };
-            for (int i = 0; i < sizeBanCo - 1; i++)
+            for (int i = 0; i < size - 1; i++)
             {
-                for (int j = 0; j < sizeBanCo; j++)
+                for (int j = 0; j < size; j++)
                 {
                     Button button = new Button()
                     {
@@ -47,7 +48,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     this.Controls.Add(button);
                     oldButton = button;
                 }
-                oldButton.Location = new Point(0, oldButton.Location.Y + DA_TinHoc_Nhom6_Minesweeper.KichThuoc.btnHeight);
+                oldButton.Location = new Point(0, oldButton.Location.Y + KichThuoc.btnHeight);
                 oldButton.Width = 0;
                 oldButton.Height = 0;
             }
@@ -57,8 +58,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         {
             Button button = new Button()
             {
-                Width = DA_TinHoc_Nhom6_Minesweeper.KichThuoc.btnWidth,
-                Height = DA_TinHoc_Nhom6_Minesweeper.KichThuoc.btnHeight
+                Width = KichThuoc.btnWidth,
+                Height = KichThuoc.btnHeight
             };
             this.Controls.Add(button);
         }

@@ -23,5 +23,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             chonCapDo.ShowDialog();
             this.Close();
         }
+
+        private void btnHuongDan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

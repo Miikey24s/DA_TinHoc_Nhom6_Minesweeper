@@ -12,7 +12,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class ChonCapDo : Form
     {
-        public int capDo = 0;
+        public int capDo = -1;
         public ChonCapDo()
         {
             InitializeComponent();
@@ -21,55 +21,28 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         private void MoveForm()
         {
             this.Hide();
-            Bom bom = new Bom();
-            bom.ChonSoBombs(capDo);
-
-            KichThuoc sizeBanCo = new KichThuoc();
-            sizeBanCo.ChonSizeBanCo(capDo);
-
-            PlayGame playGameDe = new PlayGame();
+            PlayGame playGameDe = new PlayGame(capDo);
             playGameDe.ShowDialog();
             this.Close();
         }
         //chuyen sang giao dien choi game
         private void btnDe_Click(object sender, EventArgs e)
         {
-            capDo = 1;
+            capDo = 0;
             MoveForm();
-            //this.Hide();
-            //Bom bom = new Bom();
-            //bom.GetBombs(capDo);
-
-            //Size sizeBanCo = new Size();
-            //sizeBanCo.GetSizeBanCo(capDo);
-
-            //PlayGame playGameDe = new PlayGame();
-            //playGameDe.ShowDialog();
-            //this.Close();
+            
         }
 
         private void btnVua_Click(object sender, EventArgs e)
         {
-            //capDo = 2;
-
-            //this.Hide();
-            //PlayGame playGameDe = new PlayGame();
-            //Bom bom = new Bom();
-            //bom.GetBombs(capDo);
-            //playGameDe.ShowDialog();
-            //this.Close();
+            capDo = 1;
+            MoveForm();
         }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            //capDo = 3;
-
-            //this.Hide();
-            //PlayGame playGameDe = new PlayGame();
-            //Bom bom = new Bom();
-            //bom.GetBombs(capDo);
-            //playGameDe.ShowDialog();
-            //this.Close();
+            capDo = 2;
+            MoveForm();
         }
 
         private void ChonCapDo_Load(object sender, EventArgs e)

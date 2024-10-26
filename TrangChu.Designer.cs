@@ -69,6 +69,7 @@
             this.btnHuongDan.TabIndex = 2;
             this.btnHuongDan.Text = "HƯỚNG DẪN";
             this.btnHuongDan.UseVisualStyleBackColor = true;
+            this.btnHuongDan.Click += new System.EventHandler(this.btnHuongDan_Click);
             // 
             // TrangChu
             // 
