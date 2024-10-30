@@ -30,7 +30,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         {
             capDo = 0;
             MoveForm();
-            
+
         }
 
         private void btnVua_Click(object sender, EventArgs e)
