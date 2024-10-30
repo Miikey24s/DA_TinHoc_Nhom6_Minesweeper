@@ -56,5 +56,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             TrangChu.ShowDialog();
             this.Close();
         }
+
+        private void btnTroLai_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TrangChu trangChu = new TrangChu();
+            trangChu.ShowDialog();
+            this.Close();
+        }
     }
 }
