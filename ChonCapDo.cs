@@ -28,20 +28,20 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         //chuyen sang giao dien choi game
         private void btnDe_Click(object sender, EventArgs e)
         {
-            capDo = 0;
+            this.capDo = 0;
             MoveForm();
             
         }
 
         private void btnVua_Click(object sender, EventArgs e)
         {
-            capDo = 1;
+            this.capDo = 1;
             MoveForm();
         }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            capDo = 2;
+            this.capDo = 2;
             MoveForm();
         }
 

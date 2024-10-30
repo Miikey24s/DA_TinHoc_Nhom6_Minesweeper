@@ -19,13 +19,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             switch (capDo)
             {
                 case 0:
-                    sizeBanCo = 9;
+                    this.sizeBanCo = 9;
                     break;
                 case 1:
-                    sizeBanCo = 16;
+                    this.sizeBanCo = 16;
                     break;
                 case 2:
-                    sizeBanCo = 24;
+                    this.sizeBanCo = 24;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(capDo), "Invalid level selected");
