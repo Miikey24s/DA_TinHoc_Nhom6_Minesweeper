@@ -13,38 +13,28 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class PlayGame : Form
     {
-        public int isCo = 0;
-        private int capDo;
-        private int soCo;
-        
+        ChonCapDo chonCapDo = new ChonCapDo();
+        KichThuoc sizeBanCo = new KichThuoc();
+        Bom bom = new Bom();
+        public NutMin[,] MangNut;
+        public int capDo;
+
         public PlayGame(int capDo)
         {
             InitializeComponent();
             this.capDo = capDo;
-            this.soCo = this.GetFlag();
             VeBanCo();
         }
-
         public void VeBanCo()
         {
             VeOCo();
-            VeFlag();
-        }
-
-        public void VeFlag()
-        {
-            lblSoCo.Text = this.soCo.ToString();
-        }
-
-        public int GetFlag()
-        {
-            return this.GetSizeBomb(); ;
+            DatMinNgauNhien();
+            DemMinXungQuanh();
         }
 
         public int GetSizeBanCo()
         {
             // lay kich thuoc ban co theo cap do
-            KichThuoc sizeBanCo = new KichThuoc();
             sizeBanCo.ChonSizeBanCo(this.capDo);
             return sizeBanCo.GetSizeBanCo();
         }
@@ -52,83 +42,63 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int GetSizeBomb()
         {
             // lay so bom theo cap do
-            Bom bom = new Bom();
             bom.ChonSoBombs(this.capDo);
             return bom.GetBombs();
         }
-
-        public Button CreateOldButton()
+        public void CreateButton(int i, int j)
         {
-            Button oldButton = new Button()
+            MangNut[i, j] = new NutMin(i, j)
             {
-                Width = 0,
-                Location = new Point(0, 0)
+                trangThai = 0,
+                Location = new System.Drawing.Point(i * 30, j * 30),
+                Size = new System.Drawing.Size(30, 30)
             };
-            return oldButton;
-        }
-
-        public void UpdateOldButton(ref Button oldButton)
-        {
-            oldButton.Location = new Point(0, oldButton.Location.Y + KichThuoc.btnHeight);
-            oldButton.Width = 0;
-            oldButton.Height = 0;
-        }
-
-        public void CreateButton(ref Button oldButton)
-        {
-            Button button = new Button()
-            {
-                Width = KichThuoc.btnWidth,
-                Height = KichThuoc.btnHeight,
-                Location = new Point(
-                        oldButton.Location.X + KichThuoc.btnWidth,
-                        oldButton.Location.Y
-                        ),
-                BackgroundImageLayout = ImageLayout.Zoom
-            };
-
-            button.Click += Button_Click_Handler;
-            this.Controls.Add(button);
-            oldButton = button;
-        }
-
-        private void Button_Click_Handler(object sender, EventArgs e)
-        {
-            if(soCo > 0)
-            {
-                if (isCo == 1)
-                {
-                    button_Click(sender, e);
-                    soCo--;
-                    VeFlag();
-                }
-            }
+            this.Controls.Add(MangNut[i, j]);
         }
 
         public void VeOCo()
         {
-            Button oldButton = this.CreateOldButton();
-
-            for (int i = 0; i < this.GetSizeBanCo() - 1; i++)
+            MangNut = new NutMin[this.GetSizeBanCo(), this.GetSizeBanCo()];
+            NutMin.mangNut = MangNut;
+            for (int i = 0; i < this.GetSizeBanCo(); i++)
             {
                 for (int j = 0; j < this.GetSizeBanCo(); j++)
                 {
-                    CreateButton(ref oldButton);
+                    CreateButton(i, j);
                 }
-                UpdateOldButton(ref oldButton);
             }
         }
-
-        public void button_Click(object sender, EventArgs e)
+        public void DatMinNgauNhien()
         {
-            Button buttonFlag = sender as Button;
-            buttonFlag.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            int count = 0;
+            while (count < GetSizeBomb())
+            {
+                int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
+                int r = index / GetSizeBanCo();
+                int c = index % GetSizeBanCo();
+
+                if (!MangNut[r, c].isMin)
+                {
+                    MangNut[r, c].isMin = true;
+                    count++;
+                }
+            }
         }
-
-        private void btnCo_Click(object sender, EventArgs e)
+        public void DemMinXungQuanh()
         {
-            isCo = isCo == 1 ? 0 : 1;
+            for (int i = 0; i < this.GetSizeBanCo(); i++)
+            {
+                for (int j = 0; j < this.GetSizeBanCo(); j++)
+                {
+                    int count = 0;
+                    for (int x = i - 1; x <= i + 1; x++)
+                        for (int y = j - 1; y <= j + 1; y++)
+                            if ((x < GetSizeBanCo() & y < GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
+                                if (MangNut[x, y].isMin)
+                                    count++;
+                    MangNut[i, j].countMinAround = count;
+                }
+            }
         }
     }
-
 }
