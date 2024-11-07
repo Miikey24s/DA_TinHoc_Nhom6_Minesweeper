@@ -13,7 +13,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int sizeBanCo;
         public static int btnWidth = 35;
         public static int btnHeight = 35;
-
+        public KichThuoc()
+        {
+            
+        }
         public void ChonSizeBanCo(int capDo)
         {
             switch (capDo)
@@ -28,7 +31,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     this.sizeBanCo = 24;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(capDo), "Invalid level selected");
+                    break;
             }
         }
 
