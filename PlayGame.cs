@@ -25,20 +25,30 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             this.capDo = capDo;
             VeBanCo();
         }
+        
         public void VeBanCo()
         {
             VeOCo();
             DatMinNgauNhien();
             DemMinXungQuanh();
+            SizeForm();
         }
+        public void SizeForm()
+        {
+            this.Width = GetSizeBanCo() * KichThuoc.btnWidth + 50;
+            this.Height = GetSizeBanCo() * KichThuoc.btnHeight;
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Không cho phép thay đổi kích thước
+            this.MaximizeBox = false; // Vô hiệu hóa nút phóng to
+            this.MinimizeBox = true;  // Có thể giữ hoặc bỏ nút thu nhỏ
+            this.ControlBox = true;   // Giữ thanh tiêu đề nếu cần
+        }
         public int GetSizeBanCo()
         {
             // lay kich thuoc ban co theo cap do
             sizeBanCo.ChonSizeBanCo(this.capDo);
             return sizeBanCo.GetSizeBanCo();
         }
-
         public int GetSizeBomb()
         {
             // lay so bom theo cap do

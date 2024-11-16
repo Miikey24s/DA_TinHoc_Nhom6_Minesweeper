@@ -34,7 +34,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     break;
             }
         }
-
         public int GetSizeBanCo()
         {
             return this.sizeBanCo;

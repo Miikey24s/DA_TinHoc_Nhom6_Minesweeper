@@ -16,7 +16,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class DangKy_DangNhap : Form
     {
-       private string dataTK = "DanhSachh.txt";
+       private string dataTK = "DanhSachTK.txt";
 
         public DangKy_DangNhap()
         {

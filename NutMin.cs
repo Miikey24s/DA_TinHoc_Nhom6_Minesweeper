@@ -40,9 +40,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         }
         public void KhongCoMin()
         {
-            if(clicked == true || countMinAround > 0) return;
+            if (clicked || countMinAround > 0) return;
+
             clicked = true;
-            this.BackColor = Color.Gray;
+            this.BackColor = Color.LightGray;
 
             for (int i = -1; i <= 1; i++)
             {
@@ -50,18 +51,22 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 {
                     int newDong = d + i;
                     int newCot = c + j;
-                    if (newDong < 0) break;
-                    if (newCot < 0) break;
-                    if (newDong >= mangNut.GetLength(0)) break;
-                    if (newCot >= mangNut.GetLength(1)) break;
+
+                    // Kiểm tra biên của mảng
+                    if (newDong < 0 || newDong >= mangNut.GetLength(0) ||
+                        newCot < 0 || newCot >= mangNut.GetLength(1)) continue;
 
                     NutMin mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked || mangNutMoi.isMin) break;
-                    //if (mangNutMoi.countMinAround == 0) break;
-                    mangNutMoi.KhongCoMin(); // Mở ô nếu có số mìn xung quanh
+
+                    // Bỏ qua ô đã mở hoặc là ô có mìn
+                    if (mangNutMoi.clicked || mangNutMoi.isMin) continue;
+
+                    // Đệ quy gọi hàm KhongCoMin cho ô tiếp theo
+                    mangNutMoi.KhongCoMin();
                 }
             }
         }
+
         public void VeMinNo()
         {
             this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");

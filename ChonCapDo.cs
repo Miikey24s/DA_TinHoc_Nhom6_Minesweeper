@@ -23,6 +23,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             this.Hide();
             PlayGame playGame = new PlayGame(capDo);
             playGame.ShowDialog();
+            
             this.Close();
         }
         //chuyen sang giao dien choi game
@@ -43,7 +44,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             this.capDo = 2;
             MoveForm();
         }
-
         private void ChonCapDo_Load(object sender, EventArgs e)
         {
 
