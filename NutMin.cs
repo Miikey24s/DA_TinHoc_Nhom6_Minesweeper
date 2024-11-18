@@ -14,21 +14,24 @@ namespace DA_TinHoc_Nhom6_Minesweeper
     {
         public bool clicked = false;
         public bool isMin = false;
+        public bool isFlagged = false;
+        private bool isOpen = false;
         public int countMinAround;
-        public int trangThai = -1; 
+        public int trangThai = -1; // -1: trạng thái mặc định, 0: là số, 1: là cờ
         public int d, c;
         public static NutMin[,] mangNut;
-        
+
         public NutMin(int dong, int cot)
         {
             this.d = dong;
             this.c = cot;
-            
-            this.MouseClick += new MouseEventHandler(NutMin_MouseClick);
+            this.MouseClick += new MouseEventHandler(NutMin_MouseClick); 
+            this.MouseDown += new MouseEventHandler(NutMin_MouseDown);   
         }
+
         public void SoMin()
         {
-            if(countMinAround > 0)
+            if (countMinAround > 0)
             {
                 this.Text = countMinAround.ToString();
                 clicked = true;
@@ -38,9 +41,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 KhongCoMin();
             }
         }
+
         public void KhongCoMin()
         {
-            if(clicked == true || countMinAround > 0) return;
+            if (clicked == true || countMinAround > 0) return;
             clicked = true;
             this.BackColor = Color.Gray;
 
@@ -50,25 +54,30 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 {
                     int newDong = d + i;
                     int newCot = c + j;
-                    if (newDong < 0) break;
-                    if (newCot < 0) break;
-                    if (newDong >= mangNut.GetLength(0)) break;
-                    if (newCot >= mangNut.GetLength(1)) break;
+                    if (newDong < 0) continue;
+                    if (newCot < 0) continue;
+                    if (newDong >= mangNut.GetLength(0)) continue;
+                    if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMin mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked || mangNutMoi.isMin) break;
-                    //if (mangNutMoi.countMinAround == 0) break;
-                    mangNutMoi.KhongCoMin(); // Mở ô nếu có số mìn xung quanh
+                    if (mangNutMoi.clicked || mangNutMoi.isMin) continue;
+                    mangNutMoi.KhongCoMin(); 
                 }
             }
         }
+
         public void VeMinNo()
         {
             this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
             this.BackgroundImageLayout = ImageLayout.Zoom;
         }
+
         public void Open()
         {
+            if (isOpen)
+            {
+                return;
+            }
             trangThai = -1;
             if (isMin) VeMinNo();
             else
@@ -76,20 +85,54 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 SoMin();
             }
         }
+
         private void NutMin_MouseClick(object sender, System.EventArgs e)
         {
-            //-1: trang thai mac dinh, 0: la so, 1: la co
-            switch (trangThai)
+            // Xử lý chuột trái (click)
+            if (e is MouseEventArgs me && me.Button == MouseButtons.Left)
             {
-                case -1:
-                    break;
-                case 0:
-                    Open();
-                    break;
-                case 1:
-                    //
-                    break;
+                switch (trangThai)
+                {
+                    case -1:
+                        break;
+                    case 0:
+                        Open();
+                        break;
+
+                }
             }
         }
+
+        private void NutMin_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (!isFlagged)
+                {
+                    CamCo();
+                    isFlagged = true;
+                }
+                else
+                {
+                    GoCo();
+                    isFlagged = false;
+                }
+            }
+        }
+        public void CamCo()
+        {
+            // Thêm hình ảnh cờ vào ô
+            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            //this.BackgroundImageLayout = ImageLayout.Zoom;
+            this.Text = "F";
+        }
+
+        public void GoCo()
+        {
+            // Xóa hình ảnh cờ
+            //this.BackgroundImage = null;
+            this.Text = "";
+        }
     }
+
 }

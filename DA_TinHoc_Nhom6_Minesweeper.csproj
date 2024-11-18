@@ -60,6 +60,9 @@
     <Compile Include="DangKy_DangNhap.Designer.cs">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="NutCo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NutMin.cs">
       <SubType>Component</SubType>
     </Compile>
