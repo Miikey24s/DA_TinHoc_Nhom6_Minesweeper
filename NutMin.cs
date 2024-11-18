@@ -25,8 +25,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         {
             this.d = dong;
             this.c = cot;
-            this.MouseClick += new MouseEventHandler(NutMin_MouseClick); 
-            this.MouseDown += new MouseEventHandler(NutMin_MouseDown);   
+            this.MouseClick += new MouseEventHandler(NutMin_MouseLeft); 
+            this.MouseDown += new MouseEventHandler(NutCo_MouseRight);   
         }
 
         public void SoMin()
@@ -60,7 +60,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMin mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked || mangNutMoi.isMin) continue;
+                    if (mangNutMoi.clicked ||mangNutMoi.isFlagged|| mangNutMoi.isMin) continue;
                     mangNutMoi.KhongCoMin(); 
                 }
             }
@@ -71,13 +71,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
             this.BackgroundImageLayout = ImageLayout.Zoom;
         }
-
         public void Open()
         {
-            if (isOpen)
-            {
-                return;
-            }
             trangThai = -1;
             if (isMin) VeMinNo();
             else
@@ -86,27 +81,22 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             }
         }
 
-        private void NutMin_MouseClick(object sender, System.EventArgs e)
+        private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-            
-            if (isFlagged == false)
+            if (isFlagged == true) return;
+            switch (trangThai)
             {
-                switch (trangThai)
-                {
-                    case -1:
-                        break;
-                    case 0:
-                        Open();
-                        break;
-                }
+                case -1:
+                    break;
+                case 0:
+                    Open();
+                    break;
             }
         }
-
-        private void NutMin_MouseDown(object sender, MouseEventArgs e)
+        private void NutCo_MouseRight(object sender, MouseEventArgs e)
         {
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
-            {
                 if (!isFlagged)
                 {
                     CamCo();
@@ -117,21 +107,18 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     GoCo();
                     isFlagged = false;
                 }
-            }
         }
         public void CamCo()
         {
             // Thêm hình ảnh cờ vào ô
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
-            this.Text = "F";
-        }
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
 
+        }
         public void GoCo()
         {
-            // Xóa hình ảnh cờ
-            //this.BackgroundImage = null;
-            this.Text = "";
+            //Xóa hình ảnh cờ
+            this.BackgroundImage = null;
         }
     }
 
