@@ -10,7 +10,7 @@ using System.Net.Http.Headers;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public class NutMin : Button
+    public class NutMinVaCo : Button
     {
         public bool clicked = false;
         public bool isMin = false;
@@ -19,9 +19,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int countMinAround;
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
-        public static NutMin[,] mangNut;
+        public static NutMinVaCo[,] mangNut;
 
-        public NutMin(int dong, int cot)
+        public NutMinVaCo(int dong, int cot)
         {
             this.d = dong;
             this.c = cot;
@@ -59,7 +59,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     if (newDong >= mangNut.GetLength(0)) continue;
                     if (newCot >= mangNut.GetLength(1)) continue;
 
-                    NutMin mangNutMoi = mangNut[newDong, newCot];
+                    NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
                     if (mangNutMoi.clicked ||mangNutMoi.isFlagged|| mangNutMoi.isMin) continue;
                     mangNutMoi.KhongCoMin(); 
                 }
