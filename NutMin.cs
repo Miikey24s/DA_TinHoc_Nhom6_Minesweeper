@@ -17,7 +17,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public bool isFlagged = false;
         private bool isOpen = false;
         public int countMinAround;
-        public int trangThai = -1; // -1: trạng thái mặc định, 0: là số, 1: là cờ
+        public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
         public static NutMin[,] mangNut;
 
@@ -88,8 +88,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         private void NutMin_MouseClick(object sender, System.EventArgs e)
         {
-            // Xử lý chuột trái (click)
-            if (e is MouseEventArgs me && me.Button == MouseButtons.Left)
+            
+            if (isFlagged == false)
             {
                 switch (trangThai)
                 {
@@ -98,13 +98,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     case 0:
                         Open();
                         break;
-
                 }
             }
         }
 
         private void NutMin_MouseDown(object sender, MouseEventArgs e)
         {
+            if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
             {
                 if (!isFlagged)
