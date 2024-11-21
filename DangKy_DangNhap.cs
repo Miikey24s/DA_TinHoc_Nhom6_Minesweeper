@@ -16,11 +16,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class DangKy_DangNhap : Form
     {
-       private string dataTK = "DanhSachh.txt";
-
+        private string dataTK = "DanhSachh.txt";
+        private string TGDangNhap = "ThoiGianChoi.txt";
+        private string taiKhoan;
         public DangKy_DangNhap()
         {
             InitializeComponent();
+            this.taiKhoan = txtTaiKhoan.Text;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         private void btnKhách_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu trangChu = new TrangChu();
+            TrangChu trangChu = new TrangChu(taiKhoan);
             trangChu.ShowDialog();
             this.Close();
         }
@@ -87,65 +89,73 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             bool flag = false;
             List<User> list = docFile();
             bool tontai = false;
-            if (list != null)
+            if (!string.IsNullOrEmpty(txtTaiKhoan.Text))
             {
-                foreach (User user in list)
+                if (txtTaiKhoan.Text != "")
                 {
-                    if (user.TaiKhoan == txtTaiKhoan.Text)
+                    if (list != null)
                     {
-                        tontai = true;
-                        flag = false;
-                        break;
+                        foreach (User user in list)
+                        {
+                            if (user.TaiKhoan == txtTaiKhoan.Text)
+                            {
+                                tontai = true;
+                                flag = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (tontai)
+                    {
+                        MessageBox.Show("Tài khoản đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtTaiKhoan.Text = "";
+                        txtMatKhau.Text = "";
+                    }
+                    else
+                    {
+                        User user = new User
+                        {
+                            TaiKhoan = txtTaiKhoan.Text,
+                            MatKhau = txtMatKhau.Text
+                        };
+                        flag = true;
+                        tontai = false;
+                        txtTaiKhoan.Text = "";
+                        txtMatKhau.Text = "";
+
+                        if (ghifile(user))
+                            MessageBox.Show("Đăng kí thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("KHÔNG THÀNH CÔNG", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
                 }
-            }
-            if (tontai)
-            {
-                MessageBox.Show("Tài khoản đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTaiKhoan.Text = "";
-                txtMatKhau.Text = "";
-            }
-            else
-            {
-                User user = new User
-                {
-                    TaiKhoan = txtTaiKhoan.Text,
-                    MatKhau = txtMatKhau.Text
-                };
-                flag = true;
-                tontai = false;
-                txtTaiKhoan.Text = "";
-                txtMatKhau.Text = "";
-
-                if (ghifile(user))
-                    MessageBox.Show("Đăng kí thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("KHÔNG THÀNH CÔNG", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             bool tontai = false;
             List<User> userList = docFile();
-            if (userList != null)
+            if (txtTaiKhoan.Text != "")
             {
-                foreach (User user in userList)
+                if (userList != null)
                 {
-                    if (user.TaiKhoan == txtTaiKhoan.Text && user.MatKhau!= txtMatKhau.Text)
+                    foreach (User user in userList)
                     {
-                        MessageBox.Show("Sai mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMatKhau.Text = "";
-                        tontai = true;
-                        break;
-                        
-                    }
+                        if (user.TaiKhoan == txtTaiKhoan.Text && user.MatKhau != txtMatKhau.Text)
+                        {
+                            MessageBox.Show("Sai mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMatKhau.Text = "";
+                            tontai = true;
+                            break;
 
+                        }
+
+                    }
                 }
             }
-
             if (userList != null)
             {
                 bool flag = false;
@@ -162,7 +172,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 {
                     MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    TrangChu trangChu = new TrangChu();
+                    TrangChu trangChu = new TrangChu(txtTaiKhoan.Text);
                     trangChu.ShowDialog();
                     this.Close();
                 }
@@ -173,9 +183,23 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             {
                 MessageBox.Show("Không thể đọc danh sách tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+        private void GhiThoiGianDangNhap(string taiKhoan)
+        {
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(TGDangNhap, true))
+                {
+                    sw.WriteLine($"{taiKhoan},{DateTime.Now}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi ghi log thời gian chơi: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
         [Serializable]
         public class User
         {

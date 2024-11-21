@@ -12,14 +12,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public partial class TrangChu : Form
     {
-        public TrangChu()
+        private string taiKhoan;
+        public TrangChu(string taiKhoan)
         {
             InitializeComponent();
+            this.taiKhoan = taiKhoan;
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChonCapDo chonCapDo = new ChonCapDo();
+            ChonCapDo chonCapDo = new ChonCapDo(taiKhoan);
             chonCapDo.ShowDialog();
             this.Close();
         }

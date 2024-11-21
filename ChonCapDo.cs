@@ -13,15 +13,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper
     public partial class ChonCapDo : Form
     {
         public int capDo = -1;
-        public ChonCapDo()
+        private string taiKhoan;
+        public ChonCapDo(string taiKhoan)
         {
             InitializeComponent();
+            this.taiKhoan = taiKhoan;
         }
 
         private void MoveForm()
         {
             this.Hide();
-            PlayGame playGame = new PlayGame(capDo);
+            PlayGame playGame = new PlayGame(taiKhoan,capDo);
             playGame.ShowDialog();
             this.Close();
         }
@@ -51,7 +53,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         private void btnTroLai_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu TrangChu = new TrangChu();
+            TrangChu TrangChu = new TrangChu(taiKhoan);
             TrangChu.ShowDialog();
             this.Close();
         }
