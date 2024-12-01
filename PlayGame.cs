@@ -23,7 +23,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         ChonCapDo chonCapDo;
         KichThuoc sizeBanCo = new KichThuoc();
         Bom bom = new Bom();
-        public NutMin[,] MangNut;
+        public NutMinVaCo[,] MangNut;
         public int capDo;
 
         public PlayGame(string taiKhoan,int capDo)
@@ -75,7 +75,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         }
         public void CreateButton(int i, int j)
         {
-            MangNut[i, j] = new NutMin(i, j,this)
+            MangNut[i, j] = new NutMinVaCo(i, j)
             {
                 trangThai = 0,
                 Location = new System.Drawing.Point(i * 30, j * 30),
@@ -86,8 +86,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         public void VeOCo()
         {
-            MangNut = new NutMin[this.GetSizeBanCo(), this.GetSizeBanCo()];
-            NutMin.mangNut = MangNut;
+            MangNut = new NutMinVaCo[this.GetSizeBanCo(), this.GetSizeBanCo()];
+            NutMinVaCo.mangNut = MangNut;
             for (int i = 0; i < this.GetSizeBanCo(); i++)
             {
                 for (int j = 0; j < this.GetSizeBanCo(); j++)

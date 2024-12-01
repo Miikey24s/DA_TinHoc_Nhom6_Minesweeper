@@ -10,7 +10,7 @@ using System.Net.Http.Headers;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public class NutMin : Button
+    public class NutMinVaCo : Button
     {
         private string taiKhoan = "macDinh";
         private PlayGame playgame;
@@ -21,15 +21,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int countMinAround;
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
-        public static NutMin[,] mangNut;
+        public static NutMinVaCo[,] mangNut;
 
-        public NutMin(int dong, int cot,PlayGame playgame)
+        public NutMinVaCo(int dong, int cot)
         {
             this.d = dong;
             this.c = cot;
             this.playgame = playgame;
             this.MouseClick += new MouseEventHandler(NutMin_MouseClick); 
-            this.MouseDown += new MouseEventHandler(NutMin_MouseDown);   
+            this.MouseDown += new MouseEventHandler(NutCo_MouseRight);   
         }
 
         public void SoMin()
@@ -62,8 +62,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     if (newDong >= mangNut.GetLength(0)) continue;
                     if (newCot >= mangNut.GetLength(1)) continue;
 
-                    NutMin mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked || mangNutMoi.isMin) continue;
+                    NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
+                    if (mangNutMoi.clicked ||mangNutMoi.isFlagged|| mangNutMoi.isMin) continue;
                     mangNutMoi.KhongCoMin(); 
                 }
             }
@@ -71,12 +71,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         public void VeMinNo()
         {
-            BackColor = Color.Red;
-            this.Text = "*";
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
         }
-
         public void Open()
         {
             trangThai = -99;
@@ -99,7 +96,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             }
         }
 
-        private void NutMin_MouseClick(object sender, System.EventArgs e)
+        private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
 
             if (!playgame.BatDau)
@@ -131,7 +128,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         {
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
-            {
                 if (!isFlagged)
                 {
                     CamCo();
@@ -148,16 +144,14 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public void CamCo()
         {
             // Thêm hình ảnh cờ vào ô
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
-            this.Text = "F";
-        }
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
 
+        }
         public void GoCo()
         {
-            // Xóa hình ảnh cờ
-            //this.BackgroundImage = null;
-            this.Text = "";
+            //Xóa hình ảnh cờ
+            this.BackgroundImage = null;
         }
     }
 
