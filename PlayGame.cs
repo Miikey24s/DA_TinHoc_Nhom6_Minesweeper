@@ -41,25 +41,25 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             VeOCo();
             DatMinNgauNhien();
             DemMinXungQuanh();
-            HienThiMin();
+            //HienThiMin();
             txtPlayerName.Text = TKDangChoi;
 
         }
         //Cheat Hien Min
-        public void HienThiMin()
-        {
-            for (int i = 0; i < GetSizeBanCo(); i++)
-            {
-                for (int j = 0; j < GetSizeBanCo(); j++)
-                {
-                    if (MangNut[i, j].isMin)
-                    {
-                        MangNut[i, j].BackColor = Color.Red;
-                        MangNut[i, j].Open();
-                    }
-                }
-            }
-        }
+        //public void HienThiMin()
+        //{
+        //    for (int i = 0; i < GetSizeBanCo(); i++)
+        //    {
+        //        for (int j = 0; j < GetSizeBanCo(); j++)
+        //        {
+        //            if (MangNut[i, j].isMin)
+        //            {
+        //                MangNut[i, j].BackColor = Color.Red;
+        //                MangNut[i, j].Open();
+        //            }
+        //        }
+        //    }
+        //}
         public int GetSizeBanCo()
         {
             // lay kich thuoc ban co theo cap do
@@ -75,7 +75,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         }
         public void CreateButton(int i, int j)
         {
-            MangNut[i, j] = new NutMinVaCo(i, j)
+            MangNut[i, j] = new NutMinVaCo(i, j, this)
             {
                 trangThai = 0,
                 Location = new System.Drawing.Point(i * 30, j * 30),
@@ -181,25 +181,44 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         public void KiemTraChienThang()
         {
-            foreach (NutMin nut in MangNut)
+            foreach (NutMinVaCo nut in MangNut)
             {
-                if (!nut.clicked && !nut.isMin)
-                {
-                    return;
-                }
+                if (!nut.clicked) return;// Da click het cac nut
             }
             ThangTroChoi();
         }
 
         public void ThangTroChoi()
         {
+            DialogResult result;
             StopTimer();
             MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DialogResult result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                this.Hide();
+                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
                 this.Close();
-                new PlayGame(this.TKDangChoi, this.capDo).Show();  //Chơi lại
+            }
+            else
+            {
+                Application.Exit();  //Thoát
+            }
+        } 
+        
+        public void ThuaTroChoi()
+        {
+            DialogResult result;
+            StopTimer();
+            
+            MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
+                this.Close();
             }
             else
             {

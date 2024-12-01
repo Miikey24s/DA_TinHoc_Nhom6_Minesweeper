@@ -12,8 +12,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 {
     public class NutMinVaCo : Button
     {
-        private string taiKhoan = "macDinh";
-        private PlayGame playgame;
+        //private string taiKhoan = "macDinh";
+        private PlayGame playGame;
         public bool clicked = false;
         public bool isMin = false;
         public bool isFlagged = false;
@@ -23,13 +23,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int d, c;
         public static NutMinVaCo[,] mangNut;
 
-        public NutMinVaCo(int dong, int cot)
+        public NutMinVaCo(int dong, int cot, PlayGame playGame)
         {
             this.d = dong;
             this.c = cot;
-            this.playgame = playgame;
-            this.MouseClick += new MouseEventHandler(NutMin_MouseClick); 
-            this.MouseDown += new MouseEventHandler(NutCo_MouseRight);   
+            this.playGame = playGame;
+            this.MouseClick += new MouseEventHandler(NutMin_MouseLeft);
+            this.MouseDown += new MouseEventHandler(NutCo_MouseRight);
         }
 
         public void SoMin()
@@ -63,8 +63,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked ||mangNutMoi.isFlagged|| mangNutMoi.isMin) continue;
-                    mangNutMoi.KhongCoMin(); 
+                    if (mangNutMoi.clicked || mangNutMoi.isFlagged || mangNutMoi.isMin) continue;
+                    mangNutMoi.KhongCoMin();
                 }
             }
         }
@@ -76,39 +76,24 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         }
         public void Open()
         {
-            trangThai = -99;
+            trangThai = -1;
             if (isMin) VeMinNo();
             else
             {
                 SoMin();
             }
-            {
-                if (isOpen)
-                {
-                    return;
-                }
-                trangThai = -1;
-                if (isMin) VeMinNo();
-                else
-                {
-                    SoMin();
-                }
-            }
         }
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-
-            if (!playgame.BatDau)
-            {
-                playgame.StartTimer();
-            }
+            if (!playGame.BatDau) playGame.StartTimer(); ;
 
             // Kiểm tra nếu ô này là mìn
             if (isMin)
             {
-                playgame.StopTimer();
+                playGame.StopTimer();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
+                playGame.ThuaTroChoi();
             }
             if (isFlagged == false)
             {
@@ -121,10 +106,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                         break;
                 }
             }
-            playgame.KiemTraChienThang();
+            playGame.KiemTraChienThang();
         }
 
-        private void NutMin_MouseDown(object sender, MouseEventArgs e)
+        private void NutCo_MouseRight(object sender, MouseEventArgs e)
         {
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
@@ -138,8 +123,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                     GoCo();
                     isFlagged = false;
                 }
-            }
-
         }
         public void CamCo()
         {
@@ -154,5 +137,4 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             this.BackgroundImage = null;
         }
     }
-
 }

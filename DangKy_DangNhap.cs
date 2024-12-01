@@ -86,7 +86,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         }
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            bool flag = false;
+            //bool flag = false;
             List<User> list = docFile();
             bool tontai = false;
             if (!string.IsNullOrEmpty(txtTaiKhoan.Text))
@@ -100,7 +100,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                             if (user.TaiKhoan == txtTaiKhoan.Text)
                             {
                                 tontai = true;
-                                flag = false;
+                                //flag = false;
                                 break;
                             }
                         }
@@ -118,7 +118,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                             TaiKhoan = txtTaiKhoan.Text,
                             MatKhau = txtMatKhau.Text
                         };
-                        flag = true;
+                        //flag = true;
                         tontai = false;
                         txtTaiKhoan.Text = "";
                         txtMatKhau.Text = "";
