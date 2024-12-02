@@ -84,6 +84,7 @@
             this.Controls.Add(this.lblTuaDe);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TrangChu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 

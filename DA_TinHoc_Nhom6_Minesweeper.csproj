@@ -46,21 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bom.cs" />
-    <Compile Include="ChonCapDo.cs">
+    <Compile Include="Services\Bom.cs" />
+    <Compile Include="Views\ChonCapDo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChonCapDo.Designer.cs">
+    <Compile Include="Views\ChonCapDo.Designer.cs">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
     </Compile>
-    <Compile Include="KichThuoc.cs" />
-    <Compile Include="DangKy_DangNhap.cs">
+    <Compile Include="Services\KichThuoc.cs" />
+    <Compile Include="Views\DangKy_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DangKy_DangNhap.Designer.cs">
+    <Compile Include="Views\DangKy_DangNhap.Designer.cs">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="NutMinVaCo.cs">
+    <Compile Include="Services\NutMinVaCo.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -68,27 +68,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TrangChu.cs">
+    <Compile Include="Views\TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TrangChu.Designer.cs">
+    <Compile Include="Views\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayGame.cs">
+    <Compile Include="Views\PlayGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayGame.Designer.cs">
+    <Compile Include="Views\PlayGame.Designer.cs">
       <DependentUpon>PlayGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChonCapDo.resx">
+    <EmbeddedResource Include="Views\ChonCapDo.resx">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DangKy_DangNhap.resx">
+    <EmbeddedResource Include="Views\DangKy_DangNhap.resx">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayGame.resx">
+    <EmbeddedResource Include="Views\PlayGame.resx">
       <DependentUpon>PlayGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,7 +96,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrangChu.resx">
+    <EmbeddedResource Include="Views\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -110,7 +110,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Services\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-back-32.png" />

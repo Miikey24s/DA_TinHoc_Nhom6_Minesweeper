@@ -209,7 +209,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public void ThuaTroChoi()
         {
             DialogResult result;
-            StopTimer();
+            t.Stop();
             
             MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

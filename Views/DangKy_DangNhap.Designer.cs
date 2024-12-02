@@ -108,6 +108,7 @@
             // 
             // DangKy_DangNhap
             // 
+            this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 449);
@@ -120,6 +121,7 @@
             this.Controls.Add(this.lblTaiKhoan);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DangKy_DangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 

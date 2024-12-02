@@ -38,7 +38,7 @@
             // btnDe
             // 
             this.btnDe.Location = new System.Drawing.Point(415, 242);
-            this.btnDe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDe.Margin = new System.Windows.Forms.Padding(4);
             this.btnDe.Name = "btnDe";
             this.btnDe.Size = new System.Drawing.Size(237, 92);
             this.btnDe.TabIndex = 1;
@@ -49,7 +49,7 @@
             // btnVua
             // 
             this.btnVua.Location = new System.Drawing.Point(415, 342);
-            this.btnVua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVua.Margin = new System.Windows.Forms.Padding(4);
             this.btnVua.Name = "btnVua";
             this.btnVua.Size = new System.Drawing.Size(237, 92);
             this.btnVua.TabIndex = 2;
@@ -61,7 +61,7 @@
             // 
             this.btnTroLai.Image = global::DA_TinHoc_Nhom6_Minesweeper.Properties.Resources.icons8_back_32;
             this.btnTroLai.Location = new System.Drawing.Point(16, 15);
-            this.btnTroLai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTroLai.Margin = new System.Windows.Forms.Padding(4);
             this.btnTroLai.Name = "btnTroLai";
             this.btnTroLai.Size = new System.Drawing.Size(69, 34);
             this.btnTroLai.TabIndex = 4;
@@ -72,7 +72,7 @@
             // 
             this.btnKho.AutoSize = true;
             this.btnKho.Location = new System.Drawing.Point(415, 442);
-            this.btnKho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(4);
             this.btnKho.Name = "btnKho";
             this.btnKho.Size = new System.Drawing.Size(237, 92);
             this.btnKho.TabIndex = 5;
@@ -100,8 +100,9 @@
             this.Controls.Add(this.btnTroLai);
             this.Controls.Add(this.btnVua);
             this.Controls.Add(this.btnDe);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChonCapDo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ten";
             this.Load += new System.EventHandler(this.ChonCapDo_Load);
             this.ResumeLayout(false);

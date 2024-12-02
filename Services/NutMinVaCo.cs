@@ -91,9 +91,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             // Kiểm tra nếu ô này là mìn
             if (isMin)
             {
-                playGame.StopTimer();
-                MessageBox.Show("Trúng mìn rồi bạn ơi");
                 playGame.ThuaTroChoi();
+                MessageBox.Show("Trúng mìn rồi bạn ơi");
+                
             }
             if (isFlagged == false)
             {
