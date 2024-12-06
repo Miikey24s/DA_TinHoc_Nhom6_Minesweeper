@@ -38,13 +38,31 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             {
                 this.Text = countMinAround.ToString();
                 clicked = true;
+                this.BackColor = Color.White;
+                this.ForeColor = ToMauChoSo(countMinAround);
+                this.Font = new Font(this.Font.FontFamily, 15, FontStyle.Bold);
+                this.TextAlign = ContentAlignment.MiddleCenter;
             }
             else
             {
                 KhongCoMin();
             }
         }
-
+        public Color ToMauChoSo(int number)
+        {
+            switch (number)
+            {
+                case 1: return Color.Blue;
+                case 2: return Color.Green;
+                case 3: return Color.Red;
+                case 4: return Color.Purple;
+                case 5: return Color.Brown;
+                case 6: return Color.Cyan;
+                case 7: return Color.Black;
+                case 8: return Color.Gray;
+                default: return Color.LightGray;
+            }
+        }
         public void KhongCoMin()
         {
             if (clicked == true || countMinAround > 0) return;

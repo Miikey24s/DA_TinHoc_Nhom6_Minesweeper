@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrangChu));
             this.lblTuaDe = new System.Windows.Forms.Label();
             this.btnBatDau = new System.Windows.Forms.Button();
             this.btnHuongDan = new System.Windows.Forms.Button();
@@ -36,24 +37,23 @@
             // 
             // lblTuaDe
             // 
-            this.lblTuaDe.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTuaDe.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTuaDe.BackColor = System.Drawing.Color.Transparent;
             this.lblTuaDe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTuaDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblTuaDe.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTuaDe.Location = new System.Drawing.Point(239, 81);
+            this.lblTuaDe.Font = new System.Drawing.Font("Comic Sans MS", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTuaDe.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTuaDe.Location = new System.Drawing.Point(236, 86);
             this.lblTuaDe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTuaDe.Name = "lblTuaDe";
-            this.lblTuaDe.Size = new System.Drawing.Size(533, 62);
+            this.lblTuaDe.Size = new System.Drawing.Size(533, 115);
             this.lblTuaDe.TabIndex = 0;
-            this.lblTuaDe.Text = "DÒ MÌN ĐÊ!!!";
+            this.lblTuaDe.Text = "DÒ MÌN";
             this.lblTuaDe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBatDau
             // 
             this.btnBatDau.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnBatDau.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnBatDau.Location = new System.Drawing.Point(401, 250);
+            this.btnBatDau.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnBatDau.Location = new System.Drawing.Point(404, 250);
             this.btnBatDau.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatDau.Name = "btnBatDau";
             this.btnBatDau.Size = new System.Drawing.Size(192, 63);
@@ -64,11 +64,11 @@
             // 
             // btnHuongDan
             // 
-            this.btnHuongDan.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnHuongDan.Location = new System.Drawing.Point(358, 362);
+            this.btnHuongDan.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnHuongDan.Location = new System.Drawing.Point(367, 359);
             this.btnHuongDan.Margin = new System.Windows.Forms.Padding(4);
             this.btnHuongDan.Name = "btnHuongDan";
-            this.btnHuongDan.Size = new System.Drawing.Size(277, 64);
+            this.btnHuongDan.Size = new System.Drawing.Size(270, 64);
             this.btnHuongDan.TabIndex = 2;
             this.btnHuongDan.Text = "HƯỚNG DẪN";
             this.btnHuongDan.UseVisualStyleBackColor = true;
@@ -78,6 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1031, 554);
             this.Controls.Add(this.btnHuongDan);
             this.Controls.Add(this.btnBatDau);
