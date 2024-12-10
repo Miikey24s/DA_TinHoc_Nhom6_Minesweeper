@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class TrangChu : Form
     {
@@ -21,7 +21,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         private void btnBatDau_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChonCapDo chonCapDo = new ChonCapDo(taiKhoan);
+            ChonCapDo chonCapDo = new ChonCapDo();
             chonCapDo.ShowDialog();
             this.Close();
         }

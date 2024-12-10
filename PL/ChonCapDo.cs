@@ -8,54 +8,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class ChonCapDo : Form
     {
-        public int capDo = -1;
+        //public int capDo = -1;
         private string taiKhoan;
-        public ChonCapDo(string taiKhoan)
+        public ChonCapDo()
         {
-            InitializeComponent();
-            this.taiKhoan = taiKhoan;
+            this.InitializeComponent();
+            
         }
 
-        private void MoveForm()
+        private void MoveToPlayGame(int capDo)
         {
             this.Hide();
             PlayGame playGame = new PlayGame(taiKhoan,capDo);
             playGame.ShowDialog();
             this.Close();
         }
-        //chuyen sang giao dien choi game
-        private void btnDe_Click(object sender, EventArgs e)
-        {
-            this.capDo = 0;
-            MoveForm();
-        }
-
-        private void btnVua_Click(object sender, EventArgs e)
-        {
-            this.capDo = 1;
-            MoveForm();
-        }
-
-        private void btnKho_Click(object sender, EventArgs e)
-        {
-            this.capDo = 2;
-            MoveForm();
-        }
-
-        private void ChonCapDo_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void btnTroLai_Click(object sender, EventArgs e)
+        
+        private void MoveToMainMenu()
         {
             this.Hide();
             TrangChu TrangChu = new TrangChu(taiKhoan);
             TrangChu.ShowDialog();
             this.Close();
+        }
+        //chuyen sang giao dien choi game
+        private void btnDe_Click(object sender, EventArgs e)
+        {
+            //this.capDo = 0;
+            this.MoveToPlayGame(0);
+        }
+
+        private void btnVua_Click(object sender, EventArgs e)
+        {
+            //this.capDo = 1;
+            this.MoveToPlayGame(1);
+        }
+
+        private void btnKho_Click(object sender, EventArgs e)
+        {
+            //this.capDo = 2;
+            this.MoveToPlayGame(2);
+        }
+
+        private void btnTroLai_Click(object sender, EventArgs e)
+        {
+            this.MoveToMainMenu();
         }
     }
 }

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DA_TinHoc_Nhom6_Minesweeper
 {
-    public partial class KichThuoc
+    public partial class BanCo
     {
         public int sizeBanCo;
         public static int btnWidth = 35;
         public static int btnHeight = 35;
-        public KichThuoc()
+        public BanCo()
         {
             
         }

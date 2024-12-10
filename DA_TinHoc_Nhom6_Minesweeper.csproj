@@ -46,21 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\Bom.cs" />
-    <Compile Include="Views\ChonCapDo.cs">
+    <Compile Include="BLL\Bom.cs" />
+    <Compile Include="BLL\GameLogic.cs" />
+    <Compile Include="DAL\FileHandler.cs" />
+    <Compile Include="DAL\User.cs" />
+    <Compile Include="PL\ChonCapDo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ChonCapDo.Designer.cs">
+    <Compile Include="PL\ChonCapDo.Designer.cs">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\KichThuoc.cs" />
-    <Compile Include="Views\DangKy_DangNhap.cs">
+    <Compile Include="BLL\QuanLyCapDo.cs" />
+    <Compile Include="PL\DangKy_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DangKy_DangNhap.Designer.cs">
+    <Compile Include="PL\DangKy_DangNhap.Designer.cs">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\NutMinVaCo.cs">
+    <Compile Include="BLL\NutMinVaCo.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -68,27 +71,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\TrangChu.cs">
+    <Compile Include="PL\TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TrangChu.Designer.cs">
+    <Compile Include="PL\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PlayGame.cs">
+    <Compile Include="PL\PlayGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\PlayGame.Designer.cs">
+    <Compile Include="PL\PlayGame.Designer.cs">
       <DependentUpon>PlayGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\ChonCapDo.resx">
+    <EmbeddedResource Include="PL\ChonCapDo.resx">
       <DependentUpon>ChonCapDo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\DangKy_DangNhap.resx">
+    <EmbeddedResource Include="PL\DangKy_DangNhap.resx">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PlayGame.resx">
+    <EmbeddedResource Include="PL\PlayGame.resx">
       <DependentUpon>PlayGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,7 +99,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TrangChu.resx">
+    <EmbeddedResource Include="PL\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -110,7 +113,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Services\App.config" />
+    <None Include="BLL\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-back-32.png" />
@@ -120,6 +123,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
