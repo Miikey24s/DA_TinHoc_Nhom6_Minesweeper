@@ -39,12 +39,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             this.capDo = capDo;
             this.chonCapDo = new ChonCapDo();
             VeBanCo();
-            
+
 
             gameLogic = new GameLogic(capDo);
             gameLogic.MangNut = this.MangNut;
-            VeBanCo();
+            //VeBanCo();
             gameLogic.TaoBanCo();
+            HienThiMin();
         }
         
         public void VeBanCo()
@@ -56,21 +57,20 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             txtPlayerName.Text = TKDangChoi;
 
         }
-        //Cheat Hien Min
-        //public void HienThiMin()
-        //{
-        //    for (int i = 0; i < GetSizeBanCo(); i++)
-        //    {
-        //        for (int j = 0; j < GetSizeBanCo(); j++)
-        //        {
-        //            if (MangNut[i, j].isMin)
-        //            {
-        //                MangNut[i, j].BackColor = Color.Red;
-        //                MangNut[i, j].Open();
-        //            }
-        //        }
-        //    }
-        //}
+        public void HienThiMin()
+        {
+            for (int i = 0; i < GetSizeBanCo(); i++)
+            {
+                for (int j = 0; j < GetSizeBanCo(); j++)
+                {
+                    if (MangNut[i, j].isMin)
+                    {
+                        MangNut[i, j].BackColor = Color.Red;
+                        MangNut[i, j].Open();
+                    }
+                }
+            }
+        }
         public int GetSizeBanCo()
         {
             // lay kich thuoc ban co theo cap do

@@ -82,14 +82,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
-                    if (mangNutMoi.clicked || mangNutMoi.isFlagged || mangNutMoi.isMin) continue;
-                    mangNutMoi.KhongCoMin();
+                    if (!mangNutMoi.clicked && !mangNutMoi.isFlagged)
+                    {
+                        mangNutMoi.Open(); // Gọi hàm Open để xử lý các ô kế bên
+                    }
                 }
             }
         }
 
         public void VeMinNo()
         {
+            clicked = true;
             this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
             this.BackgroundImageLayout = ImageLayout.Zoom;
         }
@@ -110,8 +113,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             // Kiểm tra nếu ô này là mìn
             if (isMin)
             {
-                ThangThuaGame.ThuaTroChoi(playGame);
+                Open();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
+                ThangThuaGame.ThuaTroChoi(playGame);
             }
             if (isFlagged == false)
             {
