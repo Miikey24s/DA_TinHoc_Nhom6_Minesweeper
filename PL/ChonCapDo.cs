@@ -14,10 +14,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     {
         //public int capDo = -1;
         private string taiKhoan;
-        public ChonCapDo(string taiKhoan)
+        public ChonCapDo()
         {
             this.InitializeComponent();
-            this.taiKhoan = taiKhoan;
+            
         }
 
         private void MoveToPlayGame(int capDo)

@@ -31,10 +31,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void TaoBanCo()
         {
             //VeOCo();
-            DatMinNgauNhien();
-            DemMinXungQuanh();
+
             //HienThiMin();
             //txtPlayerName.Text = TKDangChoi;
+
+
+            DatMinNgauNhien();
+            DemMinXungQuanh();
 
         }
         //Cheat Hien Min
@@ -166,10 +169,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         //    }
         //}
 
-        private void txtPlayerName_TextChanged(object sender, EventArgs e)
-        {
+        //private void txtPlayerName_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         //public void KiemTraChienThang()
         //{
@@ -197,15 +200,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         //        Application.Exit();  //Thoát
         //    }
         //} 
-        
+
         //public void ThuaTroChoi()
         //{
         //    DialogResult result;
         //    t.Stop();
-            
+
         //    MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
         //    if (result == DialogResult.Yes)
         //    {
         //        this.Hide();

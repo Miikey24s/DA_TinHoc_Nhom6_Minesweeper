@@ -12,6 +12,7 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
 using DA_TinHoc_Nhom6_Minesweeper.BLL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Emit;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.PL
@@ -19,41 +20,40 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     public partial class PlayGame : Form
     {
         //System.Timers.Timer t = new System.Timers.Timer();
-        //public string TKDangChoi { get; }
+        public string TKDangChoi { get; }
         //public int h, m, s;
         //public bool BatDau = false;
-        //ChonCapDo chonCapDo;
-        BLL.QuanLyCapDo sizeBanCo = new BLL.QuanLyCapDo();
-        BLL.Bom bom = new BLL.Bom();
+        ChonCapDo chonCapDo;
+        QuanLyCapDo sizeBanCo = new QuanLyCapDo();
+        Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
+        
         public int capDo;
 
         private readonly GameLogic gameLogic;
-        private readonly string username;
 
-        public PlayGame(string username, int capDo)
+        public PlayGame(string taiKhoan,int capDo)
         {
-            //this.TKDangChoi = taiKhoan;
-
-            this.capDo = capDo;
-            //this.chonCapDo = new ChonCapDo(taiKhoan);
-            //VeBanCo();
-            //t.Interval = 1000;
-            //t.Elapsed += CapNhatTG;
-
+            this.TKDangChoi = taiKhoan;
             InitializeComponent();
-            this.username = username;
-            gameLogic = new GameLogic(capDo);
-            gameLogic.TaoBanCo();
+            this.capDo = capDo;
+            this.chonCapDo = new ChonCapDo();
             VeBanCo();
+            
+
+            gameLogic = new GameLogic(capDo);
+            gameLogic.MangNut = this.MangNut;
+            VeBanCo();
+            gameLogic.TaoBanCo();
         }
+        
         public void VeBanCo()
         {
             VeOCo();
             //DatMinNgauNhien();
             //DemMinXungQuanh();
             //HienThiMin();
-            //txtPlayerName.Text = TKDangChoi;
+            txtPlayerName.Text = TKDangChoi;
 
         }
         //Cheat Hien Min
@@ -215,7 +215,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         //    {
         //        Application.Exit();  //Thoát
         //    }
-        //} 
+        //}
 
         //public void ThuaTroChoi()
         //{

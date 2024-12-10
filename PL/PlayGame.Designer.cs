@@ -28,13 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayGame));
+            this.txtTime = new System.Windows.Forms.TextBox();
+            this.txtPlayerName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // txtTime
+            // 
+            this.txtTime.Location = new System.Drawing.Point(934, 12);
+            this.txtTime.Multiline = true;
+            this.txtTime.Name = "txtTime";
+            this.txtTime.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(121, 29);
+            this.txtTime.TabIndex = 0;
+            this.txtTime.Text = "00:00:00";
+            this.txtTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPlayerName
+            // 
+            this.txtPlayerName.Location = new System.Drawing.Point(829, 16);
+            this.txtPlayerName.Name = "txtPlayerName";
+            this.txtPlayerName.ReadOnly = true;
+            this.txtPlayerName.Size = new System.Drawing.Size(95, 22);
+            this.txtPlayerName.TabIndex = 1;
+            this.txtPlayerName.TextChanged += new System.EventHandler(this.txtPlayerName_TextChanged);
             // 
             // PlayGame
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1070, 508);
+            this.Controls.Add(this.txtPlayerName);
+            this.Controls.Add(this.txtTime);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlayGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "PlayGame";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -105,15 +105,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-            //if (!playGame.BatDau) playGame.StartTimer(); ;
+            if (!DemThoiGianChoi.BatDau) DemThoiGianChoi.StartTimer();
 
-            //// Kiểm tra nếu ô này là mìn
-            //if (isMin)
-            //{
-            //    playGame.ThuaTroChoi();
-            //    MessageBox.Show("Trúng mìn rồi bạn ơi");
-                
-            //}
+            // Kiểm tra nếu ô này là mìn
+            if (isMin)
+            {
+                ThangThuaGame.ThuaTroChoi(playGame);
+                MessageBox.Show("Trúng mìn rồi bạn ơi");
+
+            }
             if (isFlagged == false)
             {
                 switch (trangThai)
@@ -125,7 +125,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                         break;
                 }
             }
-            //playGame.KiemTraChienThang();
+            this.KiemTraChienThang();
+        }
+
+        public void KiemTraChienThang()
+        {
+            foreach (NutMinVaCo nut in mangNut)
+            {
+                if (!nut.clicked) return;// Da click het cac nut
+            }
+            ThangThuaGame.ThangTroChoi(playGame);
         }
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)
