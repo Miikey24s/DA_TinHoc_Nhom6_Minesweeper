@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class TrangChu : Form
     {

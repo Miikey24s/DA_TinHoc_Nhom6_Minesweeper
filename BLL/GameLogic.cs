@@ -3,33 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DA_TinHoc_Nhom6_Minesweeper.PL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class GameLogic
     {
-        System.Timers.Timer t = new System.Timers.Timer();
-        public string TKDangChoi { get; }
-        public int h, m, s;
-        public bool BatDau = false;
-        ChonCapDo chonCapDo;
+        //System.Timers.Timer t = new System.Timers.Timer();
+        //public string TKDangChoi { get; }
+        //public int h, m, s;
+        //public bool BatDau = false;
+        //ChonCapDo chonCapDo;
         QuanLyCapDo sizeBanCo = new QuanLyCapDo();
         Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
         public int capDo;
 
-        public GameLogic(string taiKhoan,int capDo)
+        public GameLogic(/*string taiKhoan,*/int capDo)
         {
-            this.TKDangChoi = taiKhoan;
+            //this.TKDangChoi = taiKhoan;
             this.capDo = capDo;
-            this.chonCapDo = new ChonCapDo(taiKhoan);
-            VeBanCo();
-            t.Interval = 1000;
+            //this.chonCapDo = new ChonCapDo(taiKhoan);
+            //TaoBanCo();
+            //t.Interval = 1000;
             //t.Elapsed += CapNhatTG;
         }
-        public void VeBanCo()
+        public void TaoBanCo()
         {
-            VeOCo();
+            //VeOCo();
             DatMinNgauNhien();
             DemMinXungQuanh();
             //HienThiMin();
@@ -64,33 +65,33 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             bom.ChonSoBombs(this.capDo);
             return bom.GetBombs();
         }
-        public void CreateButton(int i, int j)
-        {
-            MangNut[i, j] = new NutMinVaCo(i, j, this)
-            {
-                trangThai = 0,
-                Location = new System.Drawing.Point(i * 30, j * 30),
-                Size = new System.Drawing.Size(30, 30)
-            };
-            this.Controls.Add(MangNut[i, j]);
-        }
+        //public void CreateButton(int i, int j)
+        //{
+        //    MangNut[i, j] = new NutMinVaCo(i, j, this)
+        //    {
+        //        trangThai = 0,
+        //        Location = new System.Drawing.Point(i * 30, j * 30),
+        //        Size = new System.Drawing.Size(30, 30)
+        //    };
+        //    this.Controls.Add(MangNut[i, j]);
+        //}
 
-        public void VeOCo()
-        {
-            MangNut = new NutMinVaCo[this.GetSizeBanCo(), this.GetSizeBanCo()];
-            NutMinVaCo.mangNut = MangNut;
-            for (int i = 0; i < this.GetSizeBanCo(); i++)
-            {
-                for (int j = 0; j < this.GetSizeBanCo(); j++)
-                {
-                    CreateButton(i, j);
-                }
-            }
-        }
+        //public void VeOCo()
+        //{
+        //    MangNut = new NutMinVaCo[this.GetSizeBanCo(), this.GetSizeBanCo()];
+        //    NutMinVaCo.mangNut = MangNut;
+        //    for (int i = 0; i < this.GetSizeBanCo(); i++)
+        //    {
+        //        for (int j = 0; j < this.GetSizeBanCo(); j++)
+        //        {
+        //            CreateButton(i, j);
+        //        }
+        //    }
+        //}
         public void DatMinNgauNhien()
         {
             int count = 0;
-            while (count < GetSizeBomb())
+            while (count < this.GetSizeBomb())
             {
                 int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
                 int r = index / GetSizeBanCo();
@@ -112,26 +113,26 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     int count = 0;
                     for (int x = i - 1; x <= i + 1; x++)
                         for (int y = j - 1; y <= j + 1; y++)
-                            if ((x < GetSizeBanCo() & y < GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
+                            if ((x < this.GetSizeBanCo() & y < this.GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
                                 if (MangNut[x, y].isMin)
                                     count++;
                     MangNut[i, j].countMinAround = count;
                 }
             }
         }
-        public void StartTimer()
-        {
-            if (!BatDau)
-            {
-                t.Start();
-                BatDau = true;
-            }
-        }
-        public void StopTimer()
-        {
-            t.Stop();
-            GhiThoiGianChoi(TKDangChoi, h, m, s);
-        }
+        //public void StartTimer()
+        //{
+        //    if (!BatDau)
+        //    {
+        //        t.Start();
+        //        BatDau = true;
+        //    }
+        //}
+        //public void StopTimer()
+        //{
+        //    t.Stop();
+        //    GhiThoiGianChoi(TKDangChoi, h, m, s);
+        //}
         //public void CapNhatTG(object sender, ElapsedEventArgs e)
         //{
         //    Invoke(new Action(() =>
@@ -170,51 +171,51 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 
         }
 
-        public void KiemTraChienThang()
-        {
-            foreach (NutMinVaCo nut in MangNut)
-            {
-                if (!nut.clicked) return;// Da click het cac nut
-            }
-            ThangTroChoi();
-        }
+        //public void KiemTraChienThang()
+        //{
+        //    foreach (NutMinVaCo nut in MangNut)
+        //    {
+        //        if (!nut.clicked) return;// Da click het cac nut
+        //    }
+        //    ThangTroChoi();
+        //}
 
-        public void ThangTroChoi()
-        {
-            DialogResult result;
-            StopTimer();
-            MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Hide();
-                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
-                this.Close();
-            }
-            else
-            {
-                Application.Exit();  //Thoát
-            }
-        } 
+        //public void ThangTroChoi()
+        //{
+        //    DialogResult result;
+        //    StopTimer();
+        //    MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        this.Hide();
+        //        new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        Application.Exit();  //Thoát
+        //    }
+        //} 
         
-        public void ThuaTroChoi()
-        {
-            DialogResult result;
-            t.Stop();
+        //public void ThuaTroChoi()
+        //{
+        //    DialogResult result;
+        //    t.Stop();
             
-            MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //    MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             
-            if (result == DialogResult.Yes)
-            {
-                this.Hide();
-                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
-                this.Close();
-            }
-            else
-            {
-                Application.Exit();  //Thoát
-            }
-        }
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        this.Hide();
+        //        new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        Application.Exit();  //Thoát
+        //    }
+        //}
     }
 }

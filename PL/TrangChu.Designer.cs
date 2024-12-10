@@ -1,4 +1,4 @@
-﻿namespace DA_TinHoc_Nhom6_Minesweeper
+﻿namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     partial class TrangChu
     {

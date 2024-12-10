@@ -11,38 +11,49 @@ using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
+using DA_TinHoc_Nhom6_Minesweeper.BLL;
+using System.Reflection.Emit;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class PlayGame : Form
     {
-        System.Timers.Timer t = new System.Timers.Timer();
-        public string TKDangChoi { get; }
-        public int h, m, s;
-        public bool BatDau = false;
-        ChonCapDo chonCapDo;
-        QuanLyCapDo sizeBanCo = new QuanLyCapDo();
-        Bom bom = new Bom();
+        //System.Timers.Timer t = new System.Timers.Timer();
+        //public string TKDangChoi { get; }
+        //public int h, m, s;
+        //public bool BatDau = false;
+        //ChonCapDo chonCapDo;
+        BLL.QuanLyCapDo sizeBanCo = new BLL.QuanLyCapDo();
+        BLL.Bom bom = new BLL.Bom();
         public NutMinVaCo[,] MangNut;
         public int capDo;
 
-        public PlayGame(string taiKhoan,int capDo)
+        private readonly GameLogic gameLogic;
+        private readonly string username;
+
+        public PlayGame(string username, int capDo)
         {
-            this.TKDangChoi = taiKhoan;
-            InitializeComponent();
+            //this.TKDangChoi = taiKhoan;
+
             this.capDo = capDo;
-            this.chonCapDo = new ChonCapDo(taiKhoan);
+            //this.chonCapDo = new ChonCapDo(taiKhoan);
+            //VeBanCo();
+            //t.Interval = 1000;
+            //t.Elapsed += CapNhatTG;
+
+            InitializeComponent();
+            this.username = username;
+            gameLogic = new GameLogic(capDo);
+            gameLogic.TaoBanCo();
             VeBanCo();
-            t.Interval = 1000;
-            t.Elapsed += CapNhatTG;
         }
         public void VeBanCo()
         {
             VeOCo();
-            DatMinNgauNhien();
-            DemMinXungQuanh();
+            //DatMinNgauNhien();
+            //DemMinXungQuanh();
             //HienThiMin();
-            txtPlayerName.Text = TKDangChoi;
+            //txtPlayerName.Text = TKDangChoi;
 
         }
         //Cheat Hien Min
@@ -96,135 +107,135 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 }
             }
         }
-        public void DatMinNgauNhien()
-        {
-            int count = 0;
-            while (count < GetSizeBomb())
-            {
-                int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
-                int r = index / GetSizeBanCo();
-                int c = index % GetSizeBanCo();
+        //public void DatMinNgauNhien()
+        //{
+        //    int count = 0;
+        //    while (count < GetSizeBomb())
+        //    {
+        //        int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
+        //        int r = index / GetSizeBanCo();
+        //        int c = index % GetSizeBanCo();
 
-                if (!MangNut[r, c].isMin)
-                {
-                    MangNut[r, c].isMin = true;
-                    count++;
-                }
-            }
-        }
-        public void DemMinXungQuanh()
-        {
-            for (int i = 0; i < this.GetSizeBanCo(); i++)
-            {
-                for (int j = 0; j < this.GetSizeBanCo(); j++)
-                {
-                    int count = 0;
-                    for (int x = i - 1; x <= i + 1; x++)
-                        for (int y = j - 1; y <= j + 1; y++)
-                            if ((x < GetSizeBanCo() & y < GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
-                                if (MangNut[x, y].isMin)
-                                    count++;
-                    MangNut[i, j].countMinAround = count;
-                }
-            }
-        }
-        public void StartTimer()
-        {
-            if (!BatDau)
-            {
-                t.Start();
-                BatDau = true;
-            }
-        }
-        public void StopTimer()
-        {
-            t.Stop();
-            GhiThoiGianChoi(TKDangChoi, h, m, s);
-        }
-        public void CapNhatTG(object sender, ElapsedEventArgs e)
-        {
-            Invoke(new Action(() =>
-            {
-                s += 1;
-                if (s == 60)
-                {
-                    s = 0;
-                    m += 1;
-                    if (m == 60)
-                    {
-                        m = 0;
-                        h += 1;
-                    }
-                }
-                txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
-            }));
-        }
-        private void GhiThoiGianChoi(string taiKhoan, int h, int m, int s)
-        {
-            try
-            {
-                using (StreamWriter sw = new StreamWriter("ThoiGianChoi.txt", true))
-                {
-                    sw.WriteLine($"{taiKhoan},{h:D2}:{m:D2}:{s:D2}");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi ghi log thời gian chơi: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        if (!MangNut[r, c].isMin)
+        //        {
+        //            MangNut[r, c].isMin = true;
+        //            count++;
+        //        }
+        //    }
+        //}
+        //public void DemMinXungQuanh()
+        //{
+        //    for (int i = 0; i < this.GetSizeBanCo(); i++)
+        //    {
+        //        for (int j = 0; j < this.GetSizeBanCo(); j++)
+        //        {
+        //            int count = 0;
+        //            for (int x = i - 1; x <= i + 1; x++)
+        //                for (int y = j - 1; y <= j + 1; y++)
+        //                    if ((x < GetSizeBanCo() & y < GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
+        //                        if (MangNut[x, y].isMin)
+        //                            count++;
+        //            MangNut[i, j].countMinAround = count;
+        //        }
+        //    }
+        //}
+        //public void StartTimer()
+        //{
+        //    if (!BatDau)
+        //    {
+        //        t.Start();
+        //        BatDau = true;
+        //    }
+        //}
+        //public void StopTimer()
+        //{
+        //    t.Stop();
+        //    GhiThoiGianChoi(TKDangChoi, h, m, s);
+        //}
+        //public void CapNhatTG(object sender, ElapsedEventArgs e)
+        //{
+        //    Invoke(new Action(() =>
+        //    {
+        //        s += 1;
+        //        if (s == 60)
+        //        {
+        //            s = 0;
+        //            m += 1;
+        //            if (m == 60)
+        //            {
+        //                m = 0;
+        //                h += 1;
+        //            }
+        //        }
+        //        txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
+        //    }));
+        //}
+        //private void GhiThoiGianChoi(string taiKhoan, int h, int m, int s)
+        //{
+        //    try
+        //    {
+        //        using (StreamWriter sw = new StreamWriter("ThoiGianChoi.txt", true))
+        //        {
+        //            sw.WriteLine($"{taiKhoan},{h:D2}:{m:D2}:{s:D2}");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi ghi log thời gian chơi: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void txtPlayerName_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        public void KiemTraChienThang()
-        {
-            foreach (NutMinVaCo nut in MangNut)
-            {
-                if (!nut.clicked) return;// Da click het cac nut
-            }
-            ThangTroChoi();
-        }
+        //public void KiemTraChienThang()
+        //{
+        //    foreach (NutMinVaCo nut in MangNut)
+        //    {
+        //        if (!nut.clicked) return;// Da click het cac nut
+        //    }
+        //    ThangTroChoi();
+        //}
 
-        public void ThangTroChoi()
-        {
-            DialogResult result;
-            StopTimer();
-            MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Hide();
-                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
-                this.Close();
-            }
-            else
-            {
-                Application.Exit();  //Thoát
-            }
-        } 
-        
-        public void ThuaTroChoi()
-        {
-            DialogResult result;
-            t.Stop();
-            
-            MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-            if (result == DialogResult.Yes)
-            {
-                this.Hide();
-                new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
-                this.Close();
-            }
-            else
-            {
-                Application.Exit();  //Thoát
-            }
-        }
+        //public void ThangTroChoi()
+        //{
+        //    DialogResult result;
+        //    StopTimer();
+        //    MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        this.Hide();
+        //        new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        Application.Exit();  //Thoát
+        //    }
+        //} 
+
+        //public void ThuaTroChoi()
+        //{
+        //    DialogResult result;
+        //    t.Stop();
+
+        //    MessageBox.Show("Bạn đã thua!", "Đáng tiếc!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    result = MessageBox.Show("Bạn có muốn chơi lại không?", "Chinh phục lại nào!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        this.Hide();
+        //        new ChonCapDo(TKDangChoi).ShowDialog();  //Chơi lại
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        Application.Exit();  //Thoát
+        //    }
+        //}
 
     }
 }

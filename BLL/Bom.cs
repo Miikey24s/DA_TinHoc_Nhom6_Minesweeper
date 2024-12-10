@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class Bom
     {

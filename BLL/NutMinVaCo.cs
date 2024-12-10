@@ -7,8 +7,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Net.Http.Headers;
+using DA_TinHoc_Nhom6_Minesweeper.PL;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class NutMinVaCo : Button
     {
@@ -17,7 +18,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public bool clicked = false;
         public bool isMin = false;
         public bool isFlagged = false;
-        private bool isOpen = false;
+        //private bool isOpen = false;
         public int countMinAround;
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
@@ -104,15 +105,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-            if (!playGame.BatDau) playGame.StartTimer(); ;
+            //if (!playGame.BatDau) playGame.StartTimer(); ;
 
-            // Kiểm tra nếu ô này là mìn
-            if (isMin)
-            {
-                playGame.ThuaTroChoi();
-                MessageBox.Show("Trúng mìn rồi bạn ơi");
+            //// Kiểm tra nếu ô này là mìn
+            //if (isMin)
+            //{
+            //    playGame.ThuaTroChoi();
+            //    MessageBox.Show("Trúng mìn rồi bạn ơi");
                 
-            }
+            //}
             if (isFlagged == false)
             {
                 switch (trangThai)
@@ -124,7 +125,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                         break;
                 }
             }
-            playGame.KiemTraChienThang();
+            //playGame.KiemTraChienThang();
         }
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)
