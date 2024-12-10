@@ -32,12 +32,14 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         {
             //VeOCo();
 
-            //HienThiMin();
+            
             //txtPlayerName.Text = TKDangChoi;
 
 
             DatMinNgauNhien();
             DemMinXungQuanh();
+            //HienThiMin();
+
 
         }
         //Cheat Hien Min

@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\Bom.cs" />
+    <Compile Include="BLL\DemThoiGianChoi.cs" />
     <Compile Include="BLL\GameLogic.cs" />
+    <Compile Include="BLL\ThangThuaGame.cs" />
     <Compile Include="DAL\FileHandler.cs" />
     <Compile Include="DAL\User.cs" />
     <Compile Include="PL\ChonCapDo.cs">

@@ -13,7 +13,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public static void ThangTroChoi(Form form)
         {
             DialogResult result;
-            DemThoiGianChoi.StopTimer();
+            //DemThoiGianChoi.StopTimer();
             MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
             result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)

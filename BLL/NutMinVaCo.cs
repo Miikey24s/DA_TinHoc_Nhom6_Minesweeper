@@ -105,14 +105,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-            if (!DemThoiGianChoi.BatDau) DemThoiGianChoi.StartTimer();
+            //if (!DemThoiGianChoi.BatDau) DemThoiGianChoi.StartTimer();
 
             // Kiểm tra nếu ô này là mìn
             if (isMin)
             {
                 ThangThuaGame.ThuaTroChoi(playGame);
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
-
             }
             if (isFlagged == false)
             {
