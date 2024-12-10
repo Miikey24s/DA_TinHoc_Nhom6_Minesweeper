@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DA_TinHoc_Nhom6_Minesweeper
+namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     internal static class Program
     {

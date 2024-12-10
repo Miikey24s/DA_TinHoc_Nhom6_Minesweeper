@@ -21,7 +21,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
         public int h, m, s;
         public bool BatDau = false;
         ChonCapDo chonCapDo;
-        KichThuoc sizeBanCo = new KichThuoc();
+        QuanLyCapDo sizeBanCo = new QuanLyCapDo();
         Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
         public int capDo;
