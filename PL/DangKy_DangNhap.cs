@@ -19,12 +19,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         //private string dataTK = "DanhSachh.txt";
         //private string TGDangNhap = "ThoiGianChoi.txt";
         //private string taiKhoan;
-        private readonly User user;
+        private readonly User user = new User();
         public DangKy_DangNhap()
         {
             InitializeComponent();
-            user.TaiKhoan = txtTaiKhoan.Text;
-            user.MatKhau = txtMatKhau.Text;
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -44,10 +43,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             //bool flag = false;
 
-            string username = txtTaiKhoan.Text.Trim();
-            string password = txtMatKhau.Text.Trim();
+            KhoiTaoUserData();
 
-            if (user.AddUser(username, password))
+            if (this.user.AddUser(this.user.username, this.user.password))
             {
                 MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTaiKhoan.Clear();
@@ -59,13 +57,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             }
             
         }
-
+        public void KhoiTaoUserData()
+        {
+            this.user.username = txtTaiKhoan.Text.Trim();
+            this.user.password = txtMatKhau.Text.Trim();
+        }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            string username = txtTaiKhoan.Text.Trim();
-            string password = txtMatKhau.Text.Trim();
+            KhoiTaoUserData();
 
-            if (user.ValidateUser(username, password))
+            if (this.user.ValidateUser(this.user.username, this.user.password))
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TrangChu mainMenu = new TrangChu(user);

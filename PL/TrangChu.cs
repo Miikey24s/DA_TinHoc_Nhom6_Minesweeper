@@ -19,8 +19,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             InitializeComponent();
             this.user = user;
-            if (this.user.TaiKhoan == null) lblPlayerName.Text = "Khách";
-            else lblPlayerName.Text = this.user.TaiKhoan;
+            if (this.user.username == "" || this.user.username == null)
+            {
+                this.user.username = "Khách";
+            }
+            lblPlayerName.Text = this.user.username;
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {

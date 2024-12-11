@@ -29,7 +29,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         public PlayGame(string taiKhoan,int capDo)
         {
-            user.TaiKhoan = taiKhoan;
+            user.username = taiKhoan;
             InitializeComponent();
 
             DoubleBuffering();//giam hien tuong nhap nhay
@@ -45,7 +45,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                 MangNut = this.MangNut
             };
 
-            txtPlayerName.Text = user.TaiKhoan;
+            txtPlayerName.Text = user.username;
             txtBombCount.Text = "Bomb: "+gameLogic.GetSizeBomb().ToString();
 
             gameLogic.TaoBanCo();

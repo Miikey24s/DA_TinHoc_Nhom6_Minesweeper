@@ -24,7 +24,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void MoveToPlayGame(int capDo)
         {
             this.Hide();
-            PlayGame playGame = new PlayGame(user.TaiKhoan, capDo);
+            PlayGame playGame = new PlayGame(user.username, capDo);
             playGame.ShowDialog();
             this.Close();
         }
