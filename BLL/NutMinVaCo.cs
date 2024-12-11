@@ -23,7 +23,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
         public static NutMinVaCo[,] mangNut;
-
+        public ThangThuaGame thangThuaGame = new ThangThuaGame();
         public NutMinVaCo(int dong, int cot, PlayGame playGame)
         {
             this.d = dong;
@@ -116,7 +116,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             {
                 Open();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
-                ThangThuaGame.ThuaTroChoi(playGame);
+                thangThuaGame.ThuaTroChoi(playGame);
             }
             if (isFlagged == false)
             {
@@ -138,7 +138,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             {
                 if (!nut.clicked) return;// Da click het cac nut
             }
-            ThangThuaGame.ThangTroChoi(playGame);
+            thangThuaGame.ThangTroChoi(playGame);
         }
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)

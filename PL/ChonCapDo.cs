@@ -15,10 +15,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     {
         //public int capDo = -1;
         public User user = new User();
-        public ChonCapDo()
+        public ChonCapDo(User user)
         {
             this.InitializeComponent();
-            
+            this.user = user;
         }
 
         private void MoveToPlayGame(int capDo)
@@ -32,26 +32,23 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void MoveToMainMenu()
         {
             this.Hide();
-            TrangChu TrangChu = new TrangChu(user.TaiKhoan);
+            TrangChu TrangChu = new TrangChu(user);
             TrangChu.ShowDialog();
             this.Close();
         }
         //chuyen sang giao dien choi game
         private void btnDe_Click(object sender, EventArgs e)
         {
-            //this.capDo = 0;
             this.MoveToPlayGame(0);
         }
 
         private void btnVua_Click(object sender, EventArgs e)
         {
-            //this.capDo = 1;
             this.MoveToPlayGame(1);
         }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
-            //this.capDo = 2;
             this.MoveToPlayGame(2);
         }
 

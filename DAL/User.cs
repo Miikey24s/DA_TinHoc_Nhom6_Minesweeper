@@ -19,7 +19,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
         //{
         //    this.filePath = filePath;
         //}
-
+        public User()
+        {
+            this.TaiKhoan = "";
+            this.MatKhau = "";
+        }
+        public User(string taiKhoan, string matKhau)
+        {
+            this.TaiKhoan = taiKhoan;
+            this.MatKhau = matKhau;
+        }
         public bool AddUser(string username, string password)
         {
             //var users = GetAllUsers();

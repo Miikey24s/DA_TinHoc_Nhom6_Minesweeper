@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DA_TinHoc_Nhom6_Minesweeper.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,22 +7,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 
 namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class TrangChu : Form
     {
-        private string taiKhoan;
-        public TrangChu(string taiKhoan)
+        //public DangKy_DangNhap DangKy_DangNhap = new DangKy_DangNhap();
+        public User user = new User();
+        public TrangChu(User user)
         {
             InitializeComponent();
-            this.taiKhoan = taiKhoan;
+            this.user = user;
+            if (this.user.TaiKhoan == null) lblPlayerName.Text = "Khách";
+            else lblPlayerName.Text = this.user.TaiKhoan;
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChonCapDo chonCapDo = new ChonCapDo();
+            ChonCapDo chonCapDo = new ChonCapDo(user);
             chonCapDo.ShowDialog();
             this.Close();
         }
