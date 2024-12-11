@@ -45,5 +45,21 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                              "  * Hãy nhìn vào các con số hiện lên để biết ở đâu có mìn nhé!\n" +
                              "  * Phá đảo tất cả các ô không dẫm phải mìn để thắng.", "Hướng dẫn", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        public void MoveToLogin()
+        {
+            this.Hide();
+            DangKy_DangNhap dangKy_DangNhap = new DangKy_DangNhap();
+            dangKy_DangNhap.ShowDialog();
+            this.Close();
+        }
+        private void btnTroLai_Click(object sender, EventArgs e)
+        {
+            //DemThoiGianChoi.StopTimer();
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MoveToLogin();
+            }
+        }
     }
 }

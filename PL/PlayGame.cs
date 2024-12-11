@@ -15,6 +15,7 @@ using DA_TinHoc_Nhom6_Minesweeper.BLL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Emit;
 using DA_TinHoc_Nhom6_Minesweeper.DAL;
+using Label = System.Windows.Forms.Label;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
@@ -26,7 +27,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public NutMinVaCo[,] MangNut;
         public int capDo;
         private readonly GameLogic gameLogic;
-
+        Panel boardPanel;
         public PlayGame(string taiKhoan,int capDo)
         {
             user.username = taiKhoan;
@@ -38,19 +39,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             quanLyCapDo.sizeBanCo = this.GetSizeBanCo();
             bom.bomCount = this.GetSizeBomb();
 
-            VeBanCo();
+            VeGiaoDien();
 
             gameLogic = new GameLogic(capDo)
             {
                 MangNut = this.MangNut
             };
 
-            txtPlayerName.Text = user.username;
-            txtBombCount.Text = "Bomb: "+gameLogic.GetSizeBomb().ToString();
+            
 
             gameLogic.TaoBanCo();
             HienThiMin();
-
 
         }
         public void DoubleBuffering()
@@ -59,6 +58,23 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.UserPaint, true);
+        }
+        public void VeGiaoDien()
+        {
+            VeBanCo();
+            VeThongTin();
+        }
+        public void VeThongTin()
+        {
+            txtPlayerName.Text = this.user.username;
+            txtBombCount.Text = bom.bomCount.ToString();
+            thongTinPanel.Location = new Point(quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize + 10, 0);
+
+            
+            int width = this.boardPanel.Width + this.thongTinPanel.Width + 50;//chieu ngang
+            int height = this.boardPanel.Height + 50;//chieu doc
+            this.Size = new Size(width, height);
+
         }
         public void VeBanCo()
         {
@@ -92,37 +108,37 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             return bom.GetBombs();
         }
         // i, j ten bien
-        public void CreateButton(int dong, int cot, Panel boardPanel)
+        public void CreateButton(int dong, int cot)
         {
 
-            MangNut[dong, cot] = new NutMinVaCo(dong, cot, this)
+            MangNut[dong, cot] = new NutMinVaCo(dong, cot, this, user)
             {
                 trangThai = 0,
                 Location = new System.Drawing.Point(cot * quanLyCapDo.buttonSize, dong * quanLyCapDo.buttonSize),
                 Size = new System.Drawing.Size(quanLyCapDo.buttonSize, quanLyCapDo.buttonSize)
             };
             //them vao panel thay vi form
-            boardPanel.Controls.Add(MangNut[dong, cot]);
+            this.boardPanel.Controls.Add(MangNut[dong, cot]);
         }
         public void CreateBoardPanel()
         {
-            Panel boardPanel = new DoubleBufferedPanel
+            this.boardPanel = new DoubleBufferedPanel
             {
                 Size = new Size(quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize, quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize),
                 Location = new Point(0, 0),
                 AutoScroll = true // Nếu bàn cờ lớn, cho phép cuộn
             };
 
-            boardPanel.SuspendLayout();
-            VeOCo(boardPanel);
-            boardPanel.ResumeLayout();//để ngăn việc cập nhật giao diện trong quá trình thêm các control.
+            this.boardPanel.SuspendLayout();
+            VeOCo();
+            this.boardPanel.ResumeLayout();//để ngăn việc cập nhật giao diện trong quá trình thêm các control.
 
             //chi them vao 1 lan, giam thao tac tren form -> giup toi uu toc do
-            this.Controls.Add(boardPanel);
+            this.Controls.Add(this.boardPanel);
 
         }
 
-        public void VeOCo(Panel boardPanel)
+        public void VeOCo()
         {
            
             MangNut = new NutMinVaCo[quanLyCapDo.sizeBanCo, quanLyCapDo.sizeBanCo];
@@ -133,7 +149,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             {
                 for (int cot = 0; cot < quanLyCapDo.sizeBanCo; cot++)
                 {
-                    CreateButton(dong, cot, boardPanel);
+                    CreateButton(dong, cot);
                 }
             }
             

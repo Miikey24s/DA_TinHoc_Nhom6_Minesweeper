@@ -34,6 +34,7 @@
             this.btnBatDau = new System.Windows.Forms.Button();
             this.btnHuongDan = new System.Windows.Forms.Button();
             this.lblPlayerName = new System.Windows.Forms.Label();
+            this.btnTroLai = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTuaDe
@@ -81,12 +82,23 @@
             this.lblPlayerName.TabIndex = 3;
             this.lblPlayerName.Text = "Khách";
             // 
+            // btnTroLai
+            // 
+            this.btnTroLai.Image = global::DA_TinHoc_Nhom6_Minesweeper.Properties.Resources.icons8_back_32;
+            this.btnTroLai.Location = new System.Drawing.Point(12, 9);
+            this.btnTroLai.Name = "btnTroLai";
+            this.btnTroLai.Size = new System.Drawing.Size(55, 33);
+            this.btnTroLai.TabIndex = 5;
+            this.btnTroLai.UseVisualStyleBackColor = true;
+            this.btnTroLai.Click += new System.EventHandler(this.btnTroLai_Click);
+            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.btnTroLai);
             this.Controls.Add(this.lblPlayerName);
             this.Controls.Add(this.btnHuongDan);
             this.Controls.Add(this.btnBatDau);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.Button btnBatDau;
         private System.Windows.Forms.Button btnHuongDan;
         private System.Windows.Forms.Label lblPlayerName;
+        private System.Windows.Forms.Button btnTroLai;
     }
 }

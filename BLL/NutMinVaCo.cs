@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 using DA_TinHoc_Nhom6_Minesweeper.PL;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
@@ -23,12 +24,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
         public static NutMinVaCo[,] mangNut;
-        public ThangThuaGame thangThuaGame = new ThangThuaGame();
-        public NutMinVaCo(int dong, int cot, PlayGame playGame)
+        public User user = new User();
+        public ThangThuaGame thangThuaGame;
+        
+        public NutMinVaCo(int dong, int cot, PlayGame playGame, User user)
         {
             this.d = dong;
             this.c = cot;
             this.playGame = playGame;
+            this.user = user;
+            thangThuaGame = new ThangThuaGame(user);
             this.MouseClick += new MouseEventHandler(NutMin_MouseLeft);
             this.MouseDown += new MouseEventHandler(NutCo_MouseRight);
         }

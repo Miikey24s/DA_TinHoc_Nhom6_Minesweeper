@@ -11,7 +11,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class ThangThuaGame
     {
-        private User user = new User();
+        private readonly User user = new User();
         public ThangThuaGame(User user)
         {
             this.user = user;
