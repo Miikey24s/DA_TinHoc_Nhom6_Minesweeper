@@ -21,10 +21,14 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
     {
         System.Timers.Timer t = new System.Timers.Timer();
         public string TKDangChoi { get; }
+        private System.Windows.Forms.TextBox txtTime;
         public int h, m, s;
         public bool BatDau = false;
-        public DemThoiGianChoi()
+        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string taiKhoan)
         {
+            this.txtTime = txtTime;
+            this.TKDangChoi = taiKhoan;
+            h = m = s = 0;
             t.Interval = 1000;
             t.Elapsed += CapNhatTG;
         }
@@ -36,29 +40,35 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 BatDau = true;
             }
         }
-        public void StopTimer()
+        public void StopTimerNoSave()
+        {
+            t.Stop();
+            BatDau = false;
+        }
+        public void StopTimerAndSave()
         {
             t.Stop();
             GhiThoiGianChoi(TKDangChoi, h, m, s);
+            BatDau = false;
         }
 
         public void CapNhatTG(object sender, ElapsedEventArgs e) {
-        
-            //Invoke(new Action(() =>
-            //{
-            //    s += 1;
-            //    if (s == 60)
-            //    {
-            //        s = 0;
-            //        m += 1;
-            //        if (m == 60)
-            //        {
-            //            m = 0;
-            //            h += 1;
-            //        }
-            //    }
-            //    txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
-            //}));
+
+            txtTime.Invoke(new Action(() =>
+            {
+                s += 1;
+                if (s == 60)
+                {
+                    s = 0;
+                    m += 1;
+                    if (m == 60)
+                    {
+                        m = 0;
+                        h += 1;
+                    }
+                }
+                txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
+            }));
         }
 
         private void GhiThoiGianChoi(string taiKhoan, int h, int m, int s)

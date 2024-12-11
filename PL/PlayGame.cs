@@ -22,25 +22,28 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     {
         //System.Timers.Timer t = new System.Timers.Timer();
         public User user = new User();
+        public string TKDangChoi { get; }
         //public int h, m, s;
         //public bool BatDau = false;
         ChonCapDo chonCapDo;
         QuanLyCapDo sizeBanCo = new QuanLyCapDo();
         Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
-        
+        public DemThoiGianChoi demtg;
         public int capDo;
 
         private readonly GameLogic gameLogic;
 
         public PlayGame(string taiKhoan,int capDo)
         {
-            user.TaiKhoan = taiKhoan;
+
+
+            this.TKDangChoi = taiKhoan;
             InitializeComponent();
             this.capDo = capDo;
             this.chonCapDo = new ChonCapDo();
             VeBanCo();
-
+            demtg = new DemThoiGianChoi(txtTime,taiKhoan);
 
             gameLogic = new GameLogic(capDo);
             gameLogic.MangNut = this.MangNut;
@@ -53,7 +56,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             
             //VeBanCo();
             gameLogic.TaoBanCo();
-            //HienThiMin();
+            HienThiMin();
            
 
         }
@@ -65,7 +68,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             //DatMinNgauNhien();
             //DemMinXungQuanh();
             //HienThiMin();
-            
+            txtPlayerName.Text = TKDangChoi;
+
         }
         public void HienThiMin()
         {

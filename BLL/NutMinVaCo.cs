@@ -13,6 +13,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class NutMinVaCo : Button
     {
+        private DemThoiGianChoi demtg;
         //private string taiKhoan = "macDinh";
         private PlayGame playGame;
         public bool clicked = false;
@@ -107,13 +108,19 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         }
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
-        {
-            //if (!DemThoiGianChoi.BatDau) DemThoiGianChoi.StartTimer();
-
-            // Kiểm tra nếu ô này là mìn
-            if (isMin)
+        { 
+            // Chỉ khi bắt đầu click vào nút mới bắt đầu tính thời gian chạy
+            if (!playGame.demtg.BatDau)
+            {
+                playGame.demtg.StartTimer();
+                playGame.demtg.BatDau = true;
+            }
+                // Kiểm tra nếu ô này là mìn
+                if (isMin)
             {
                 Open();
+                //Nếu trúng mìn tiến hành dừng thời gian không lưu và thông báo thua
+                playGame.demtg.StopTimerNoSave();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
                 ThangThuaGame.ThuaTroChoi(playGame);
             }
@@ -137,6 +144,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             {
                 if (!nut.clicked) return;// Da click het cac nut
             }
+            //nếu các nút đã được click hết thì thắng và lưu thời gian vào file
+            playGame.demtg.StopTimerAndSave();
             ThangThuaGame.ThangTroChoi(playGame);
         }
 
