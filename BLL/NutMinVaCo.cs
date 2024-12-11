@@ -66,6 +66,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         }
         public void KhongCoMin()
         {
+            //resume load lai mang ( co cac nut da clicked )
             if (clicked == true || countMinAround > 0) return;
             clicked = true;
             this.BackColor = Color.Gray;

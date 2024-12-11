@@ -16,7 +16,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             //DemThoiGianChoi.StopTimer();
             MessageBox.Show("Bạn đã thắng!", "Chúc mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
             result = MessageBox.Show("Bạn có muốn chơi lại không?", "Trò chơi đã thắng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes) 
             {
                 form.Hide();
                 new ChonCapDo().ShowDialog();  //Chơi lại

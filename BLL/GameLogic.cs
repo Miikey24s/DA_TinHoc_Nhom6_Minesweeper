@@ -99,6 +99,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             while (count < this.GetSizeBomb())
             {
                 int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
+                //trung lap index
                 int r = index / GetSizeBanCo();
                 int c = index % GetSizeBanCo();
 
@@ -109,6 +110,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 }
             }
         }
+        // sua lai for
         public void DemMinXungQuanh()
         {
             for (int i = 0; i < this.GetSizeBanCo(); i++)

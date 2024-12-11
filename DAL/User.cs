@@ -10,6 +10,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
 {
     public class User
     {
+        // diem, thoi gian, tien trinh tro choi
         public string TaiKhoan { get; set; }
         public string MatKhau { get; set; }
 
