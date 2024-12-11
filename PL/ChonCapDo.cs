@@ -14,11 +14,12 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     public partial class ChonCapDo : Form
     {
         //public int capDo = -1;
+        
         public User user = new User();
         public ChonCapDo()
         {
             this.InitializeComponent();
-            
+           
         }
 
         private void MoveToPlayGame(int capDo)

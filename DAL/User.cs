@@ -8,16 +8,26 @@ using System.Windows.Forms;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.DAL
 {
+    
     public class User
     {
         public string TaiKhoan { get; set; }
         public string MatKhau { get; set; }
-
+        public static string TKDangChoi;
         //private string filePath;
         //public User(string filePath)
         //{
         //    this.filePath = filePath;
         //}
+
+        public static string GetTKDangChoi()
+        {
+            return TKDangChoi;
+        }
+        public static void SetTKDangChoi(string taiKhoan)
+        {
+            TKDangChoi = taiKhoan;
+        }
 
         public bool AddUser(string username, string password)
         {
@@ -120,6 +130,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
 
                 if (flag)
                 {
+                    SetTKDangChoi(username);    
                     //MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Hide();
                     //TrangChu trangChu = new TrangChu(username);
@@ -138,6 +149,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                 MessageBox.Show("Không thể đọc danh sách tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
+        }
+        public void GetUser(string username)
+        {
+            TaiKhoan = username;
         }
     }
 }

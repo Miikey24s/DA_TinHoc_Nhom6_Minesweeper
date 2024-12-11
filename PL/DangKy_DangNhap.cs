@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics.Eventing.Reader;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 //using static DA_TinHoc_Nhom6_Minesweeper.DangKy_DangNhap;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.PL
@@ -33,6 +34,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnKhách_Click(object sender, EventArgs e)
         {
+            User.SetTKDangChoi("Khách");
             this.Hide();
             TrangChu trangChu = new TrangChu(taiKhoan);
             trangChu.ShowDialog();
@@ -157,7 +159,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             if (user.ValidateUser(username, password))
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                User.SetTKDangChoi(username);
                 TrangChu mainMenu = new TrangChu(username);
+                
                 this.Hide();
                 mainMenu.ShowDialog();
                 this.Close();
@@ -235,6 +239,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         //{
         //    public string TaiKhoan { get; set; }
         //    public string MatKhau { get; set; }
+        //}
+        //public void GetUserName(string taiKhoan)
+        //{
+
+        //    taiKhoan = DAL.User;
         //}
     }
 }

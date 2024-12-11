@@ -22,7 +22,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     {
         //System.Timers.Timer t = new System.Timers.Timer();
         public User user = new User();
-        public string TKDangChoi { get; }
+        //public string TKDangChoi { get; }
         //public int h, m, s;
         //public bool BatDau = false;
         ChonCapDo chonCapDo;
@@ -34,31 +34,24 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private readonly GameLogic gameLogic;
 
-        public PlayGame(string taiKhoan,int capDo)
+        public PlayGame(string taiKhoan, int capDo)
         {
+            
+            string TKDangChoi = User.GetTKDangChoi();
 
-
-            this.TKDangChoi = taiKhoan;
             InitializeComponent();
+            txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
             this.chonCapDo = new ChonCapDo();
             VeBanCo();
-            demtg = new DemThoiGianChoi(txtTime,taiKhoan);
-
+            demtg = new DemThoiGianChoi(txtTime, taiKhoan);
             gameLogic = new GameLogic(capDo);
             gameLogic.MangNut = this.MangNut;
 
-            txtPlayerName.Text = user.TaiKhoan;
-            txtBombCount.Text = "Bomb: "+gameLogic.GetSizeBomb().ToString();
-            
+            txtBombCount.Text = "Bomb: " + gameLogic.GetSizeBomb().ToString();
 
-
-            
-            //VeBanCo();
             gameLogic.TaoBanCo();
             HienThiMin();
-           
-
         }
         
         public void VeBanCo()
@@ -68,7 +61,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             //DatMinNgauNhien();
             //DemMinXungQuanh();
             //HienThiMin();
-            txtPlayerName.Text = TKDangChoi;
+           
 
         }
         public void HienThiMin()

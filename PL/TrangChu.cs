@@ -12,11 +12,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class TrangChu : Form
     {
-        private string taiKhoan;
+        
         public TrangChu(string taiKhoan)
         {
             InitializeComponent();
-            this.taiKhoan = taiKhoan;
+            
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {

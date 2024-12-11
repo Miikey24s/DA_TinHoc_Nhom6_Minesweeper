@@ -14,20 +14,22 @@ using System.Timers;
 using DA_TinHoc_Nhom6_Minesweeper.BLL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Emit;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class DemThoiGianChoi
     {
         System.Timers.Timer t = new System.Timers.Timer();
-        public string TKDangChoi { get; }
+
+        string TKDangChoi = "*";
         private System.Windows.Forms.TextBox txtTime;
         public int h, m, s;
         public bool BatDau = false;
-        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string taiKhoan)
+        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi)
         {
             this.txtTime = txtTime;
-            this.TKDangChoi = taiKhoan;
+            this.TKDangChoi = User.GetTKDangChoi();
             h = m = s = 0;
             t.Interval = 1000;
             t.Elapsed += CapNhatTG;
@@ -71,13 +73,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             }));
         }
 
-        private void GhiThoiGianChoi(string taiKhoan, int h, int m, int s)
+        private void GhiThoiGianChoi(string TKDangChoi, int h, int m, int s)
         {
             try
             {
                 using (StreamWriter sw = new StreamWriter("ThoiGianChoi.txt", true))
                 {
-                    sw.WriteLine($"{taiKhoan},{h:D2}:{m:D2}:{s:D2}");
+                    sw.WriteLine($"{TKDangChoi},{h:D2}:{m:D2}:{s:D2}");
                 }
             }
             catch (Exception ex)
