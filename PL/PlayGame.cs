@@ -14,13 +14,14 @@ using System.Timers;
 using DA_TinHoc_Nhom6_Minesweeper.BLL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Emit;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class PlayGame : Form
     {
         //System.Timers.Timer t = new System.Timers.Timer();
-        public string TKDangChoi { get; }
+        public User user = new User();
         //public int h, m, s;
         //public bool BatDau = false;
         ChonCapDo chonCapDo;
@@ -34,7 +35,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         public PlayGame(string taiKhoan,int capDo)
         {
-            this.TKDangChoi = taiKhoan;
+            user.TaiKhoan = taiKhoan;
             InitializeComponent();
             this.capDo = capDo;
             this.chonCapDo = new ChonCapDo();
@@ -43,19 +44,28 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
             gameLogic = new GameLogic(capDo);
             gameLogic.MangNut = this.MangNut;
+
+            txtPlayerName.Text = user.TaiKhoan;
+            txtBombCount.Text = "Bomb: "+gameLogic.GetSizeBomb().ToString();
+            
+
+
+            
             //VeBanCo();
             gameLogic.TaoBanCo();
-            HienThiMin();
+            //HienThiMin();
+           
+
         }
         
         public void VeBanCo()
         {
+            
             VeOCo();
             //DatMinNgauNhien();
             //DemMinXungQuanh();
             //HienThiMin();
-            txtPlayerName.Text = TKDangChoi;
-
+            
         }
         public void HienThiMin()
         {

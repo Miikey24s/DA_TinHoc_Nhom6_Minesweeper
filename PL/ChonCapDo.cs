@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DA_TinHoc_Nhom6_Minesweeper.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     public partial class ChonCapDo : Form
     {
         //public int capDo = -1;
-        private string taiKhoan;
+        public User user = new User();
         public ChonCapDo()
         {
             this.InitializeComponent();
@@ -23,7 +24,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void MoveToPlayGame(int capDo)
         {
             this.Hide();
-            PlayGame playGame = new PlayGame(taiKhoan,capDo);
+            PlayGame playGame = new PlayGame(user.TaiKhoan, capDo);
             playGame.ShowDialog();
             this.Close();
         }
@@ -31,7 +32,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void MoveToMainMenu()
         {
             this.Hide();
-            TrangChu TrangChu = new TrangChu(taiKhoan);
+            TrangChu TrangChu = new TrangChu(user.TaiKhoan);
             TrangChu.ShowDialog();
             this.Close();
         }
