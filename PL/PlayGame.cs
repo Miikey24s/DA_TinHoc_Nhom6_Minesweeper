@@ -128,38 +128,44 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                 }
             }
         }
-        //public void DatMinNgauNhien()
-        //{
-        //    int count = 0;
-        //    while (count < GetSizeBomb())
-        //    {
-        //        int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
-        //        int r = index / GetSizeBanCo();
-        //        int c = index % GetSizeBanCo();
+        public void DatMinNgauNhien()
+        {
+            int count = 0;
+            while (count < GetSizeBomb())
+            {
+                int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
+                int r = index / GetSizeBanCo();
+                int c = index % GetSizeBanCo();
 
-        //        if (!MangNut[r, c].isMin)
-        //        {
-        //            MangNut[r, c].isMin = true;
-        //            count++;
-        //        }
-        //    }
-        //}
-        //public void DemMinXungQuanh()
-        //{
-        //    for (int i = 0; i < this.GetSizeBanCo(); i++)
-        //    {
-        //        for (int j = 0; j < this.GetSizeBanCo(); j++)
-        //        {
-        //            int count = 0;
-        //            for (int x = i - 1; x <= i + 1; x++)
-        //                for (int y = j - 1; y <= j + 1; y++)
-        //                    if ((x < GetSizeBanCo() & y < GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
-        //                        if (MangNut[x, y].isMin)
-        //                            count++;
-        //            MangNut[i, j].countMinAround = count;
-        //        }
-        //    }
-        //}
+                if (!MangNut[r, c].isMin)
+                {
+                    MangNut[r, c].isMin = true;
+                    count++;
+                }
+            }
+        }
+        public void DemMinXungQuanh()
+        {
+            int size = GetSizeBanCo(); 
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    int count = 0;
+                    for (int x = Math.Max(0, i - 1); x <= Math.Min(size - 1, i + 1); x++)
+                    {
+                        for (int y = Math.Max(0, j - 1); y <= Math.Min(size - 1, j + 1); y++)
+                        {
+                            if (!(x == i && y == j) && MangNut[x, y].isMin) 
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                    MangNut[i, j].countMinAround = count;
+                }
+            }
+        }
         //public void StartTimer()
         //{
         //    if (!BatDau)

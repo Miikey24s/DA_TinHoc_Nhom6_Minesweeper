@@ -187,13 +187,5 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             //this.BackgroundImage = null;
             this.Text = "";
         }
-        //public void CapNhatSoCo(object sender, ElapsedEventArgs e)
-        //{
-        //    txtFlagCount.Invoke(new Action(() =>
-        //    {
-        //        Cập nhật số cờ đã cắm vào TextBox(txtFlagCount)
-        //        txtFlagCount.Text = "So co da cam" + flagCount.ToString();
-        //    }));
-        //}
     }
 }
