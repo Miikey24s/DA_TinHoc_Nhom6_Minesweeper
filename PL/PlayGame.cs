@@ -53,7 +53,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             
 
             gameLogic.TaoBanCo();
-            HienThiMin();
+            //HienThiMin();
             CapNhapSoCo();
         }
         private void CapNhapSoCo()
@@ -103,6 +103,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public void VeBanCo()
         {
             CreateBoardPanel();
+            
         }
         public void HienThiMin()
         {
@@ -156,8 +157,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             this.boardPanel.SuspendLayout();
             VeOCo();
             this.boardPanel.ResumeLayout();//để ngăn việc cập nhật giao diện trong quá trình thêm các control.
-
-            //chi them vao 1 lan, giam thao tac tren form -> giup toi uu toc do
             this.Controls.Add(this.boardPanel);
 
         }
