@@ -102,9 +102,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void VeMinNo()
         {
             clicked = true;
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
-            this.Text = "B";
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
+            
         }
         public void Open()
         {
@@ -133,10 +133,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
                 thangThuaGame.ThuaTroChoi(playGame);
             }
-            if(trangThai==0)
-            {
-                Open();
-            }
+            //if(trangThai==0)
+            //{
+            //    Open();
+            //}
             if (isFlagged == false)
             {
                 switch (trangThai)
@@ -169,12 +169,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             {
                 if (!isFlagged)
                 {
+                    if (playGame.flagCount >= playGame.bom.bomCount) return;
                     CamCo();
                     isFlagged = true;
+                    
                     playGame.IncreaseFlagCount();
+                    
+                    
                 }
                 else
                 {
+                    if (playGame.flagCount < 0) return;
                     GoCo();
                     isFlagged = false;
                     playGame.DecreaseFlagCount();
@@ -184,15 +189,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void CamCo()
         {
             // Thêm hình ảnh cờ vào ô
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
-            this.Text = "F";
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
+            //this.Text = "F";
         }
         public void GoCo()
         {
             //Xóa hình ảnh cờ
-            //this.BackgroundImage = null;
-            this.Text = "";
+            this.BackgroundImage = null;
+            //this.Text = "";
         }
     }
 }

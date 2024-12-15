@@ -29,7 +29,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi)
         {
             this.txtTime = txtTime;
-            //this.TKDangChoi = User.GetTKDangChoi();
             this.username = TKDangChoi;
             h = m = s = 0;
             t.Interval = 1000;

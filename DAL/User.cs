@@ -14,6 +14,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
         // diem, thoi gian, tien trinh tro choi
         public string username { get; set; }
         public string password { get; set; }
+        //public static string TKDangChoi;
         //private string filePath;
         //public User(string filePath)
         //{
@@ -140,7 +141,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
 
                 if (flag)
                 {
-                    //SetTKDangChoi(username);    
+                    //SetTKDangChoi(username);
                     //MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //this.Hide();
                     //TrangChu trangChu = new TrangChu(username);
@@ -162,7 +163,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
         }
         //public void GetUser(string username)
         //{
-        //    TaiKhoan = username;
+        //    this.username = username;
         //}
     }
 }

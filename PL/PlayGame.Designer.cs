@@ -53,12 +53,12 @@
             // 
             this.txtPlayerName.Enabled = false;
             this.txtPlayerName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.txtPlayerName.Location = new System.Drawing.Point(16, 5);
+            this.txtPlayerName.Location = new System.Drawing.Point(2, 5);
             this.txtPlayerName.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlayerName.Multiline = true;
             this.txtPlayerName.Name = "txtPlayerName";
             this.txtPlayerName.ReadOnly = true;
-            this.txtPlayerName.Size = new System.Drawing.Size(80, 40);
+            this.txtPlayerName.Size = new System.Drawing.Size(100, 40);
             this.txtPlayerName.TabIndex = 1;
             // 
             // txtTime
@@ -70,7 +70,7 @@
             this.txtTime.Multiline = true;
             this.txtTime.Name = "txtTime";
             this.txtTime.ReadOnly = true;
-            this.txtTime.Size = new System.Drawing.Size(109, 40);
+            this.txtTime.Size = new System.Drawing.Size(100, 40);
             this.txtTime.TabIndex = 0;
             this.txtTime.Text = "00:00:00";
             this.txtTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -78,12 +78,12 @@
             // txtFlagCount
             // 
             this.txtFlagCount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtFlagCount.Location = new System.Drawing.Point(16, 47);
+            this.txtFlagCount.Location = new System.Drawing.Point(2, 47);
             this.txtFlagCount.Margin = new System.Windows.Forms.Padding(2);
             this.txtFlagCount.Multiline = true;
             this.txtFlagCount.Name = "txtFlagCount";
             this.txtFlagCount.ReadOnly = true;
-            this.txtFlagCount.Size = new System.Drawing.Size(80, 40);
+            this.txtFlagCount.Size = new System.Drawing.Size(100, 40);
             this.txtFlagCount.TabIndex = 3;
             // 
             // txtBombCount
@@ -95,7 +95,7 @@
             this.txtBombCount.Multiline = true;
             this.txtBombCount.Name = "txtBombCount";
             this.txtBombCount.ReadOnly = true;
-            this.txtBombCount.Size = new System.Drawing.Size(109, 40);
+            this.txtBombCount.Size = new System.Drawing.Size(100, 40);
             this.txtBombCount.TabIndex = 2;
             // 
             // PlayGame

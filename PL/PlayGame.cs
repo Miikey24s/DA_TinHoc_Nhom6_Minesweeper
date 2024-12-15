@@ -22,13 +22,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     public partial class PlayGame : Form
     {
         public User user = new User();
-        QuanLyCapDo quanLyCapDo = new QuanLyCapDo();
-        Bom bom = new Bom();
+        public QuanLyCapDo quanLyCapDo = new QuanLyCapDo();
+        public Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
         public DemThoiGianChoi demtg;
         public int capDo;
         private readonly GameLogic gameLogic;
-        private int flagCount = 0;
+        public int flagCount = 0;
         
         Panel boardPanel;
         public PlayGame(string taiKhoan,int capDo)
@@ -38,7 +38,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             //txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
             //VeBanCo();
-            demtg = new DemThoiGianChoi(txtTime, taiKhoan);
+            demtg = new DemThoiGianChoi(txtTime, user.username);
             this.capDo = capDo;
             quanLyCapDo.sizeBanCo = this.GetSizeBanCo();
             bom.bomCount = this.GetSizeBomb();
@@ -64,23 +64,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         // Method to increase flag count
         public void IncreaseFlagCount()
         {
-            if(flagCount > bom.bomCount)
-            {
-                return;
-            }
             flagCount++;
             CapNhapSoCo();
+            
         }
 
         // Method to decrease flag count
         public void DecreaseFlagCount()
         {
-            if (flagCount < 0)
-            {
-                return;
-            }
             flagCount--;
             CapNhapSoCo();
+            
         }
         public void DoubleBuffering()
         {
