@@ -18,7 +18,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
             {
                 FileStream fs = new FileStream(dataTK, FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
-                sw.WriteLine($"{user.TaiKhoan},{user.MatKhau}");
+                sw.WriteLine($"{user.username},{user.password}");
                 sw.Close();
                 fs.Close();
                 return true;
@@ -44,7 +44,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                         string[] parts = line.Split(',');
                         if (parts.Length == 2)
                         {
-                            User user = new User { TaiKhoan = parts[0], MatKhau = parts[1] };
+                            User user = new User { username = parts[0], password = parts[1] };
                             userList.Add(user);
                         }
                     }

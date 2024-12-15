@@ -11,8 +11,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
     
     public class User
     {
-        public string TaiKhoan { get; set; }
-        public string MatKhau { get; set; }
+        // diem, thoi gian, tien trinh tro choi
+        public string username { get; set; }
+        public string password { get; set; }
         public static string TKDangChoi;
         //private string filePath;
         //public User(string filePath)
@@ -29,6 +30,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
             TKDangChoi = taiKhoan;
         }
 
+        public User()
+        {
+            this.username = "";
+            this.password = "";
+        }
+        public User(string taiKhoan, string matKhau)
+        {
+            this.username = taiKhoan;
+            this.password = matKhau;
+        }
         public bool AddUser(string username, string password)
         {
             //var users = GetAllUsers();
@@ -49,7 +60,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                     {
                         foreach (User user in list)
                         {
-                            if (user.TaiKhoan == username)
+                            if (user.username == username)
                             {
                                 tonTai = true;
                                 //flag = false;
@@ -67,8 +78,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                     {
                         User user = new User
                         {
-                            TaiKhoan = username,
-                            MatKhau = password
+                            username = username,
+                            password = password
                         };
                         //flag = true;
                         tonTai = false;
@@ -104,7 +115,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                 {
                     foreach (User user in userList)
                     {
-                        if (user.TaiKhoan == username && user.MatKhau != password)
+                        if (user.username == username && user.password != password)
                         {
                             MessageBox.Show("Sai mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             password = "";
@@ -121,7 +132,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.DAL
                 bool flag = false;
                 foreach (User user in userList)
                 {
-                    if (user.TaiKhoan == username && user.MatKhau == password)
+                    if (user.username == username && user.password == password)
                     {
                         flag = true;
                         break;

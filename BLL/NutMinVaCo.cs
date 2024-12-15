@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 using DA_TinHoc_Nhom6_Minesweeper.PL;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 using System.Timers;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
@@ -27,10 +28,16 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public static NutMinVaCo[,] mangNut;
         public int flagCount = 0;
         public NutMinVaCo( int dong, int cot, PlayGame playGame)
+        public User user = new User();
+        public ThangThuaGame thangThuaGame;
+        
+        public NutMinVaCo(int dong, int cot, PlayGame playGame, User user)
         {
             this.d = dong;
             this.c = cot;
             this.playGame = playGame;
+            this.user = user;
+            thangThuaGame = new ThangThuaGame(user);
             this.MouseClick += new MouseEventHandler(NutMin_MouseLeft);
             this.MouseDown += new MouseEventHandler(NutCo_MouseRight);
         }
@@ -68,6 +75,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         }
         public void KhongCoMin()
         {
+            //resume load lai mang ( co cac nut da clicked )
             if (clicked == true || countMinAround > 0) return;
             clicked = true;
             this.BackColor = Color.Gray;
@@ -84,7 +92,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
-                    if (!mangNutMoi.clicked /*&& !mangNutMoi.isFlagged*/)
+                    if (!mangNutMoi.clicked && !mangNutMoi.isFlagged)
                     {
                         mangNutMoi.Open(); // Gọi hàm Open để xử lý các ô kế bên
                     }
@@ -124,7 +132,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 //Nếu trúng mìn tiến hành dừng thời gian không lưu và thông báo thua
                 playGame.demtg.StopTimerNoSave();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
-                ThangThuaGame.ThuaTroChoi(playGame);
+                thangThuaGame.ThuaTroChoi(playGame);
             }
             if(trangThai==0)
             {

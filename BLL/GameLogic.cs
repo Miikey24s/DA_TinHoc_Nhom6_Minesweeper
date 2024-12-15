@@ -106,6 +106,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 }
             }
         }
+        // sua lai for
         public void DemMinXungQuanh()
         {
             int size = this.GetSizeBanCo();

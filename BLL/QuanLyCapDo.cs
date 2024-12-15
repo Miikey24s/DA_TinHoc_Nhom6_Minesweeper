@@ -11,8 +11,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
     public partial class QuanLyCapDo
     {
         public int sizeBanCo;
-        public static int btnWidth = 35;
-        public static int btnHeight = 35;
+        public int buttonSize = 30;
         public QuanLyCapDo()
         {
             

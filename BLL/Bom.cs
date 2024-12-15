@@ -9,19 +9,19 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class Bom
     {
-        public int bom;
+        public int bomCount;
         public void ChonSoBombs(int capDo)
         {
             switch (capDo)
             {
                 case 0:
-                    this.bom = 10;
+                    this.bomCount = 10;
                     break;
                 case 1:
-                    this.bom = 40;
+                    this.bomCount = 40;
                     break;
                 case 2:
-                    this.bom = 99;
+                    this.bomCount = 99;
                     break;
                 default:
                     break;
@@ -29,7 +29,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         }
         public int GetBombs()
         {
-            return this.bom;
+            return this.bomCount;
         }
     } 
 }
