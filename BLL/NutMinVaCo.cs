@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 using DA_TinHoc_Nhom6_Minesweeper.PL;
+using System.Timers;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
@@ -19,13 +20,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public bool clicked = false;
         public bool isMin = false;
         public bool isFlagged = false;
-        //private bool isOpen = false;
+        private bool isOpen = false;
         public int countMinAround;
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
         public static NutMinVaCo[,] mangNut;
-
-        public NutMinVaCo(int dong, int cot, PlayGame playGame)
+        public int flagCount = 0;
+        public NutMinVaCo( int dong, int cot, PlayGame playGame)
         {
             this.d = dong;
             this.c = cot;
@@ -83,7 +84,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     if (newCot >= mangNut.GetLength(1)) continue;
 
                     NutMinVaCo mangNutMoi = mangNut[newDong, newCot];
-                    if (!mangNutMoi.clicked && !mangNutMoi.isFlagged)
+                    if (!mangNutMoi.clicked /*&& !mangNutMoi.isFlagged*/)
                     {
                         mangNutMoi.Open(); // Gọi hàm Open để xử lý các ô kế bên
                     }
@@ -94,8 +95,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void VeMinNo()
         {
             clicked = true;
-            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
-            this.BackgroundImageLayout = ImageLayout.Zoom;
+            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
+            //this.BackgroundImageLayout = ImageLayout.Zoom;
+            this.Text = "B";
         }
         public void Open()
         {
@@ -116,13 +118,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 playGame.demtg.BatDau = true;
             }
                 // Kiểm tra nếu ô này là mìn
-                if (isMin)
+            if (isMin)
             {
                 Open();
                 //Nếu trúng mìn tiến hành dừng thời gian không lưu và thông báo thua
                 playGame.demtg.StopTimerNoSave();
                 MessageBox.Show("Trúng mìn rồi bạn ơi");
                 ThangThuaGame.ThuaTroChoi(playGame);
+            }
+            if(trangThai==0)
+            {
+                Open();
             }
             if (isFlagged == false)
             {
@@ -153,28 +159,41 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         {
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
+            {
                 if (!isFlagged)
                 {
                     CamCo();
                     isFlagged = true;
+                    playGame.IncreaseFlagCount();
                 }
                 else
                 {
                     GoCo();
                     isFlagged = false;
+                    playGame.DecreaseFlagCount();
                 }
+            }
         }
         public void CamCo()
         {
             // Thêm hình ảnh cờ vào ô
-            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
-            this.BackgroundImageLayout = ImageLayout.Zoom;
-
+            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
+            //this.BackgroundImageLayout = ImageLayout.Zoom;
+            this.Text = "F";
         }
         public void GoCo()
         {
             //Xóa hình ảnh cờ
-            this.BackgroundImage = null;
+            //this.BackgroundImage = null;
+            this.Text = "";
         }
+        //public void CapNhatSoCo(object sender, ElapsedEventArgs e)
+        //{
+        //    txtFlagCount.Invoke(new Action(() =>
+        //    {
+        //        Cập nhật số cờ đã cắm vào TextBox(txtFlagCount)
+        //        txtFlagCount.Text = "So co da cam" + flagCount.ToString();
+        //    }));
+        //}
     }
 }

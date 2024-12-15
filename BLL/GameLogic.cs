@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DA_TinHoc_Nhom6_Minesweeper.PL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
@@ -69,38 +71,67 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         //        }
         //    }
         //}
+        //public void DatMinNgauNhien()
+        //{
+        //    int count = 0;
+        //    while (count < this.GetSizeBomb())
+        //    {
+        //        int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
+        //        int r = index / GetSizeBanCo();
+        //        int c = index % GetSizeBanCo();
+
+        //        if (!MangNut[r, c].isMin)
+        //        {
+        //            MangNut[r, c].isMin = true;
+        //            count++;
+        //        }
+        //    }
+        //}
         public void DatMinNgauNhien()
         {
             int count = 0;
+            Random rand = new Random(DateTime.Now.Millisecond); // Dùng thời gian hiện tại làm hạt giống
+
             while (count < this.GetSizeBomb())
             {
-                int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
-                int r = index / GetSizeBanCo();
-                int c = index % GetSizeBanCo();
+                // Tạo chỉ số ngẫu nhiên cho dòng và cột
+                int r = rand.Next(GetSizeBanCo());
+                int c = rand.Next(GetSizeBanCo());
 
+                // Kiểm tra nếu ô đó chưa có mìn, thì đặt mìn vào
                 if (!MangNut[r, c].isMin)
                 {
                     MangNut[r, c].isMin = true;
-                    count++;
+                    count++; // Tăng số lượng mìn đã đặt
                 }
             }
         }
         public void DemMinXungQuanh()
         {
-            for (int i = 0; i < this.GetSizeBanCo(); i++)
+            int size = this.GetSizeBanCo();
+            // Duyệt qua tất cả các ô để tính số mìn xung quanh
+            for (int i = 0; i < size; i++)
             {
-                for (int j = 0; j < this.GetSizeBanCo(); j++)
+                for (int j = 0; j < size; j++)
                 {
-                    int count = 0;
-                    for (int x = i - 1; x <= i + 1; x++)
-                        for (int y = j - 1; y <= j + 1; y++)
-                            if ((x < this.GetSizeBanCo() & y < this.GetSizeBanCo()) & (x >= 0 & y >= 0) & !(x == i & y == j))
-                                if (MangNut[x, y].isMin)
-                                    count++;
-                    MangNut[i, j].countMinAround = count;
+                    // Nếu ô hiện tại chứa mìn, ta sẽ cộng số mìn cho các ô xung quanh
+                    if (MangNut[i, j].isMin)
+                    {
+                        // Duyệt qua các ô xung quanh (bao gồm các ô trên, dưới, trái, phải, và chéo)
+                        for (int x = Math.Max(0, i - 1); x <= Math.Min(size - 1, i + 1); x++)
+                        {
+                            for (int y = Math.Max(0, j - 1); y <= Math.Min(size - 1, j + 1); y++)
+                            {
+                                // Nếu ô (x, y) không phải là ô (i, j) và không phải là mìn
+                                if (x != i || y != j)
+                                {
+                                    MangNut[x, y].countMinAround++;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        
     }
 }

@@ -31,14 +31,12 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public NutMinVaCo[,] MangNut;
         public DemThoiGianChoi demtg;
         public int capDo;
-
         private readonly GameLogic gameLogic;
-
+        private int flagCount = 0;
         public PlayGame(string taiKhoan, int capDo)
         {
             
             string TKDangChoi = User.GetTKDangChoi();
-
             InitializeComponent();
             txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
@@ -47,13 +45,29 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             demtg = new DemThoiGianChoi(txtTime, taiKhoan);
             gameLogic = new GameLogic(capDo);
             gameLogic.MangNut = this.MangNut;
-
             txtBombCount.Text = "Bomb: " + gameLogic.GetSizeBomb().ToString();
-
             gameLogic.TaoBanCo();
             HienThiMin();
+            CapNhapSoCo();
         }
-        
+        private void CapNhapSoCo()
+        {
+            txtFlagCount.Text = "Số cờ: " + flagCount.ToString();
+        }
+
+        // Method to increase flag count
+        public void IncreaseFlagCount()
+        {
+            flagCount++;
+            CapNhapSoCo();
+        }
+
+        // Method to decrease flag count
+        public void DecreaseFlagCount()
+        {
+            flagCount--;
+            CapNhapSoCo();
+        }
         public void VeBanCo()
         {
             
@@ -191,11 +205,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         //        MessageBox.Show($"Lỗi ghi log thời gian chơi: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //    }
         //}
-
-        private void txtPlayerName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         //public void KiemTraChienThang()
         //{
