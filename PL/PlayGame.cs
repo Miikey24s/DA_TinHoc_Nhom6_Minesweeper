@@ -67,7 +67,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public void VeThongTin()
         {
             txtPlayerName.Text = this.user.username;
-            txtBombCount.Text = bom.bomCount.ToString();
+            txtBombCount.Text = "Bomb: " + bom.bomCount.ToString();
             thongTinPanel.Location = new Point(quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize + 10, 0);
 
             
