@@ -22,14 +22,15 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
     {
         System.Timers.Timer t = new System.Timers.Timer();
 
-        string TKDangChoi = "*";
+        string username = "*";
         private System.Windows.Forms.TextBox txtTime;
         public int h, m, s;
         public bool BatDau = false;
         public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi)
         {
             this.txtTime = txtTime;
-            this.TKDangChoi = User.GetTKDangChoi();
+            //this.TKDangChoi = User.GetTKDangChoi();
+            this.username = TKDangChoi;
             h = m = s = 0;
             t.Interval = 1000;
             t.Elapsed += CapNhatTG;
@@ -50,7 +51,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void StopTimerAndSave()
         {
             t.Stop();
-            GhiThoiGianChoi(TKDangChoi, h, m, s);
+            GhiThoiGianChoi(username, h, m, s);
             BatDau = false;
         }
 

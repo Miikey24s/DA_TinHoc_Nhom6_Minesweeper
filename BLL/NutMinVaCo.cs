@@ -27,7 +27,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public int d, c;
         public static NutMinVaCo[,] mangNut;
         public int flagCount = 0;
-        public NutMinVaCo( int dong, int cot, PlayGame playGame)
         public User user = new User();
         public ThangThuaGame thangThuaGame;
         
@@ -160,7 +159,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             }
             //nếu các nút đã được click hết thì thắng và lưu thời gian vào file
             playGame.demtg.StopTimerAndSave();
-            ThangThuaGame.ThangTroChoi(playGame);
+            thangThuaGame.ThangTroChoi(playGame);
         }
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)

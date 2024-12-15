@@ -29,78 +29,82 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayGame));
-            this.txtTime = new System.Windows.Forms.TextBox();
-            this.txtPlayerName = new System.Windows.Forms.TextBox();
-            this.txtBombCount = new System.Windows.Forms.TextBox();
             this.thongTinPanel = new DA_TinHoc_Nhom6_Minesweeper.BLL.DoubleBufferedPanel();
-            this.thongTinPanel.SuspendLayout();
+            this.txtPlayerName = new System.Windows.Forms.TextBox();
+            this.txtTime = new System.Windows.Forms.TextBox();
             this.txtFlagCount = new System.Windows.Forms.TextBox();
+            this.txtBombCount = new System.Windows.Forms.TextBox();
+            this.thongTinPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtTime
-            // 
-            this.txtTime.Location = new System.Drawing.Point(78, 6);
-            this.txtTime.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTime.Location = new System.Drawing.Point(950, 42);
-            this.txtTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTime.Multiline = true;
-            this.txtTime.Name = "txtTime";
-            this.txtTime.ReadOnly = true;
-            this.txtTime.Size = new System.Drawing.Size(107, 38);
-            this.txtTime.TabIndex = 0;
-            this.txtTime.Text = "00:00:00";
-            this.txtTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPlayerName
-            // 
-            this.txtPlayerName.Location = new System.Drawing.Point(2, 6);
-            this.txtPlayerName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlayerName.Name = "txtPlayerName";
-            this.txtPlayerName.ReadOnly = true;
-            this.txtPlayerName.Size = new System.Drawing.Size(72, 20);
-            this.txtPlayerName.TabIndex = 1;
-            // 
-            // txtBombCount
-            // 
-            this.txtBombCount.Location = new System.Drawing.Point(2, 30);
-            this.txtBombCount.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBombCount.Name = "txtBombCount";
-            this.txtBombCount.ReadOnly = true;
-            this.txtBombCount.Size = new System.Drawing.Size(72, 20);
-            this.txtBombCount.TabIndex = 2;
             // 
             // thongTinPanel
             // 
             this.thongTinPanel.Controls.Add(this.txtPlayerName);
-            this.thongTinPanel.Controls.Add(this.txtBombCount);
             this.thongTinPanel.Controls.Add(this.txtTime);
-            this.thongTinPanel.Location = new System.Drawing.Point(593, 12);
+            this.thongTinPanel.Controls.Add(this.txtFlagCount);
+            this.thongTinPanel.Controls.Add(this.txtBombCount);
+            this.thongTinPanel.Location = new System.Drawing.Point(445, 10);
+            this.thongTinPanel.Margin = new System.Windows.Forms.Padding(2);
             this.thongTinPanel.Name = "thongTinPanel";
-            this.thongTinPanel.Size = new System.Drawing.Size(179, 92);
+            this.thongTinPanel.Size = new System.Drawing.Size(211, 96);
             this.thongTinPanel.TabIndex = 3;
+            // 
+            // txtPlayerName
+            // 
+            this.txtPlayerName.Enabled = false;
+            this.txtPlayerName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtPlayerName.Location = new System.Drawing.Point(16, 5);
+            this.txtPlayerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlayerName.Multiline = true;
+            this.txtPlayerName.Name = "txtPlayerName";
+            this.txtPlayerName.ReadOnly = true;
+            this.txtPlayerName.Size = new System.Drawing.Size(80, 40);
+            this.txtPlayerName.TabIndex = 1;
+            // 
+            // txtTime
+            // 
+            this.txtTime.Enabled = false;
+            this.txtTime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTime.Location = new System.Drawing.Point(100, 5);
+            this.txtTime.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTime.Multiline = true;
+            this.txtTime.Name = "txtTime";
+            this.txtTime.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(109, 40);
+            this.txtTime.TabIndex = 0;
+            this.txtTime.Text = "00:00:00";
+            this.txtTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtFlagCount
             // 
             this.txtFlagCount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtFlagCount.Location = new System.Drawing.Point(950, 118);
+            this.txtFlagCount.Location = new System.Drawing.Point(16, 47);
+            this.txtFlagCount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFlagCount.Multiline = true;
             this.txtFlagCount.Name = "txtFlagCount";
-            this.txtFlagCount.Size = new System.Drawing.Size(107, 34);
+            this.txtFlagCount.ReadOnly = true;
+            this.txtFlagCount.Size = new System.Drawing.Size(80, 40);
             this.txtFlagCount.TabIndex = 3;
+            // 
+            // txtBombCount
+            // 
+            this.txtBombCount.Enabled = false;
+            this.txtBombCount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtBombCount.Location = new System.Drawing.Point(100, 47);
+            this.txtBombCount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBombCount.Multiline = true;
+            this.txtBombCount.Name = "txtBombCount";
+            this.txtBombCount.ReadOnly = true;
+            this.txtBombCount.Size = new System.Drawing.Size(109, 40);
+            this.txtBombCount.TabIndex = 2;
             // 
             // PlayGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(802, 413);
             this.Controls.Add(this.thongTinPanel);
-            this.ClientSize = new System.Drawing.Size(1069, 508);
-            this.Controls.Add(this.txtFlagCount);
-            this.Controls.Add(this.txtBombCount);
-            this.Controls.Add(this.txtPlayerName);
-            this.Controls.Add(this.txtTime);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlayGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlayGame";

@@ -52,7 +52,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BLL\GameLogic.cs" />
-    <Compile Include="BLL\NutCo.cs" />
     <Compile Include="BLL\ThangThuaGame.cs" />
     <Compile Include="DAL\FileHandler.cs" />
     <Compile Include="DAL\User.cs" />

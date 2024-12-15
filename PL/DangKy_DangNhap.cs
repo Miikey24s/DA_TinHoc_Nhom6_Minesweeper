@@ -33,7 +33,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnKhách_Click(object sender, EventArgs e)
         {
-            User.SetTKDangChoi("Khách");
             this.Hide();
             TrangChu trangChu = new TrangChu(user);
             trangChu.ShowDialog();

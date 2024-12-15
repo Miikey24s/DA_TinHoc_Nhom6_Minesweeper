@@ -35,10 +35,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             user.username = taiKhoan;
             InitializeComponent();
-            txtPlayerName.Text = TKDangChoi;
+            //txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
-            this.chonCapDo = new ChonCapDo();
-            VeBanCo();
+            //VeBanCo();
             demtg = new DemThoiGianChoi(txtTime, taiKhoan);
             this.capDo = capDo;
             quanLyCapDo.sizeBanCo = this.GetSizeBanCo();
@@ -65,6 +64,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         // Method to increase flag count
         public void IncreaseFlagCount()
         {
+            if(flagCount > bom.bomCount)
+            {
+                return;
+            }
             flagCount++;
             CapNhapSoCo();
         }
@@ -72,10 +75,14 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         // Method to decrease flag count
         public void DecreaseFlagCount()
         {
+            if (flagCount < 0)
+            {
+                return;
+            }
             flagCount--;
             CapNhapSoCo();
         }
-        public void VeBanCo()
+        public void DoubleBuffering()
         {
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
