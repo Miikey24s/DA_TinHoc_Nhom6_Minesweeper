@@ -11,11 +11,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
     public class GameLogic
     {
-        //System.Timers.Timer t = new System.Timers.Timer();
-        //public string TKDangChoi { get; }
-        //public int h, m, s;
-        //public bool BatDau = false;
-        //ChonCapDo chonCapDo;
         QuanLyCapDo sizeBanCo = new QuanLyCapDo();
         Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;

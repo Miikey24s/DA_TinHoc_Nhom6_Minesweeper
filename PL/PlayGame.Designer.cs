@@ -52,24 +52,24 @@
             this.thongTinPanel.Location = new System.Drawing.Point(445, 10);
             this.thongTinPanel.Margin = new System.Windows.Forms.Padding(2);
             this.thongTinPanel.Name = "thongTinPanel";
-            this.thongTinPanel.Size = new System.Drawing.Size(204, 127);
+            this.thongTinPanel.Size = new System.Drawing.Size(204, 234);
             this.thongTinPanel.TabIndex = 3;
             // 
             // txtScore
             // 
             this.txtScore.Enabled = false;
             this.txtScore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.txtScore.Location = new System.Drawing.Point(2, 47);
+            this.txtScore.Location = new System.Drawing.Point(0, 91);
             this.txtScore.Margin = new System.Windows.Forms.Padding(2);
             this.txtScore.Multiline = true;
             this.txtScore.Name = "txtScore";
             this.txtScore.ReadOnly = true;
-            this.txtScore.Size = new System.Drawing.Size(117, 40);
+            this.txtScore.Size = new System.Drawing.Size(196, 40);
             this.txtScore.TabIndex = 6;
             // 
             // btnResume
             // 
-            this.btnResume.Location = new System.Drawing.Point(96, 90);
+            this.btnResume.Location = new System.Drawing.Point(107, 135);
             this.btnResume.Margin = new System.Windows.Forms.Padding(2);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(89, 27);
@@ -80,7 +80,7 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(2, 90);
+            this.btnPause.Location = new System.Drawing.Point(14, 135);
             this.btnPause.Margin = new System.Windows.Forms.Padding(2);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(89, 27);

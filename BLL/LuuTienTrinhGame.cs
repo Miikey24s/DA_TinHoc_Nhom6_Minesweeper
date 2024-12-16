@@ -18,7 +18,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
     {
         //public static User user = new User();
 
-
         public static void SaveTienTrinhGame(string username, NutMinVaCo[,] MangNut, int capDo)
         {
             using (StreamWriter writer = new StreamWriter($"{username}_Game_Save.txt"))
@@ -104,7 +103,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             }
             return (capDo);
         }
-        public static PlayGame LoadMangNut(string username)
+        public static PlayGame LoadMangNut(string username, ChonCapDo chonCapDo)
         {
             if (!File.Exists($"{username}_game_Save.txt"))
             {
@@ -121,7 +120,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 string userName = reader.ReadLine().Split(':')[1].Trim();
                 capDo = int.Parse(reader.ReadLine().Split(' ')[0]);
                 //timePlayed = "";
-                playGame = new PlayGame(userName, capDo);
+                playGame = new PlayGame(userName, capDo, chonCapDo);
 
                 string line;
                 while ((line = reader.ReadLine()) != null)

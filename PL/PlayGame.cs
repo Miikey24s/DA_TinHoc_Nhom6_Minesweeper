@@ -31,20 +31,21 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private readonly GameLogic gameLogic;
         public int flagCount = 0;
         public bool isPaused = false;
+        public bool isLoadResume = false;
         public int score = 0;
-
+        ChonCapDo chonCapDo;
         Panel boardPanel;
-        public PlayGame(string taiKhoan, int capDo)
+
+        public PlayGame(string taiKhoan, int capDo, ChonCapDo chonCapDo)
         {
             user.username = taiKhoan;
             InitializeComponent();
 
             CapNhapSoCo();
-            //txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
-            //VeBanCo();
-            demtg = new DemThoiGianChoi(txtTime, user.username, this);
-            this.capDo = capDo;
+            this.chonCapDo = chonCapDo;
+            demtg = new DemThoiGianChoi(txtTime, user.username);
+
             quanLyCapDo.sizeBanCo = this.GetSizeBanCo();
             bom.bomCount = this.GetSizeBomb();
 
@@ -56,7 +57,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             };
             gameLogic.TaoBanCo();
             HienThiMin();
-            //CapNhapSoCo();
+            
+            score = LuuTienTrinhGamme.LoadScore(taiKhoan);
+            Diem();
         }
         public void Diem()
         {
@@ -64,10 +67,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         }
         public void TinhDiem()
         {
-            score += 10;
-            Diem();
+            if(isLoadResume == false)
+            {
+                score += 1;
+                Diem();
+            }
         }
-        private void CapNhapSoCo()
+        public void CapNhapSoCo()
         {
             txtFlagCount.Text = "Số cờ: " + flagCount.ToString();
         }
@@ -147,7 +153,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public void CreateButton(int dong, int cot)
         {
 
-            MangNut[dong, cot] = new NutMinVaCo(dong, cot, this, user)
+            MangNut[dong, cot] = new NutMinVaCo(dong, cot, this, user, chonCapDo)
             {
                 trangThai = 0,
                 Location = new System.Drawing.Point(cot * quanLyCapDo.buttonSize, dong * quanLyCapDo.buttonSize),

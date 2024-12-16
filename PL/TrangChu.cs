@@ -1,4 +1,5 @@
-﻿using DA_TinHoc_Nhom6_Minesweeper.DAL;
+﻿using DA_TinHoc_Nhom6_Minesweeper.BLL;
+using DA_TinHoc_Nhom6_Minesweeper.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,18 +25,19 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                 this.user.username = "Khách";
             }
             lblPlayerName.Text = this.user.username;
+            btnScore.Text = "Điểm: " + LuuTienTrinhGamme.LoadScore(this.user.username).ToString();
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ChonCapDo chonCapDo = new ChonCapDo(user);
-            chonCapDo.ShowDialog();
-            this.Close();
-
-
-            
+            MoveToChonCapDo();
         }
-        
+        public void MoveToChonCapDo()
+        {
+            this.Hide();
+            ChonCapDo chonCapDo = new ChonCapDo(user, this);
+            chonCapDo.ShowDialog();
+            //this.Close();
+        }
         private void btnHuongDan_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hướng dẫn chơi DÒ MÌN ĐÊ!!!:\n" +

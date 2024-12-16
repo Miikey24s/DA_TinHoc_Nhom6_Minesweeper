@@ -35,6 +35,7 @@
             this.btnHuongDan = new System.Windows.Forms.Button();
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.btnTroLai = new System.Windows.Forms.Button();
+            this.btnScore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTuaDe
@@ -92,12 +93,23 @@
             this.btnTroLai.UseVisualStyleBackColor = true;
             this.btnTroLai.Click += new System.EventHandler(this.btnTroLai_Click);
             // 
+            // btnScore
+            // 
+            this.btnScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnScore.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnScore.Location = new System.Drawing.Point(617, 25);
+            this.btnScore.Name = "btnScore";
+            this.btnScore.Size = new System.Drawing.Size(144, 51);
+            this.btnScore.TabIndex = 6;
+            this.btnScore.UseVisualStyleBackColor = true;
+            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.btnScore);
             this.Controls.Add(this.btnTroLai);
             this.Controls.Add(this.lblPlayerName);
             this.Controls.Add(this.btnHuongDan);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Button btnHuongDan;
         private System.Windows.Forms.Label lblPlayerName;
         private System.Windows.Forms.Button btnTroLai;
+        private System.Windows.Forms.Button btnScore;
     }
 }

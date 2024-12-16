@@ -28,12 +28,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public int h, m, s;
         public bool BatDau = false;
         private PlayGame PlayGame;
-        private int point = 0;
-        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi,PlayGame playGame)
         public static bool isResume = false;
+
         public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi)
         {
-            this.PlayGame=playGame;
             this.txtTime = txtTime;
             this.username = TKDangChoi;
             

@@ -17,21 +17,30 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class ChonCapDo : Form
     {
+        public TrangChu trangChu;
         public int capDoResume = -1;
         public int countFlag = 0;
-
+        public static bool isResume = false;
         public User user = new User();
         public PlayGame resumeGame;
-        public ChonCapDo(User user)
+        public static bool isWinOrLose = false;
+        public ChonCapDo(User user, TrangChu trangChu)
         {
+            
             this.InitializeComponent();
             this.user = user;
+            this.trangChu = trangChu;
             GetCapDo();
-            if (this.capDoResume == -1)
+            RemoveButtonResume();
+        }
+        public void RemoveButtonResume()
+        {
+            if (this.capDoResume == -1 || isWinOrLose == true)
             {
                 this.Controls.Remove(btnResume); // Xoá button khỏi form
                 return; // Dừng thực hiện phương thức nếu cần
             }
+            
         }
         public void GetCapDo()
         {
@@ -43,7 +52,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             string[] files = Directory.GetFiles(Application.StartupPath, $"{user.username}_Game_Save.txt");
             var (loadTime, capDo) = LuuTienTrinhGamme.LoadTienTrinhGame(user.username, user);
             this.capDoResume = capDo;
-            playGame = LuuTienTrinhGamme.LoadMangNut(user.username);
+            playGame = LuuTienTrinhGamme.LoadMangNut(user.username, this);
 
 
             LoadResumeGame(ref playGame);
@@ -55,6 +64,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         }
         public void LoadResumeGame(ref PlayGame playGame)
         {
+            playGame.isLoadResume = true;
             for (int i = 0; i < playGame.MangNut.GetLength(0); i++)
             {
                 for (int j = 0; j < playGame.MangNut.GetLength(1); j++)
@@ -71,23 +81,23 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                     }
                 }
             }
+
+            playGame.isLoadResume = false;
         }
         private void MoveToPlayGame(int capDo)
         {
             this.Hide();
-            PlayGame playGame = new PlayGame(user.username, capDo);
+            PlayGame playGame = new PlayGame(user.username, capDo, this);
+            //playGame.score = LuuTienTrinhGamme.LoadCapDo(user.username);
             playGame.ShowDialog();
-            this.Close();
-
-            
+            //this.Close();
         }
         
         private void MoveToMainMenu()
         {
             this.Hide();
-            TrangChu TrangChu = new TrangChu(user);
-            TrangChu.ShowDialog();
-            this.Close();
+            trangChu.Show();
+            //this.Close();
         }
         //chuyen sang giao dien choi game
         private void btnDe_Click(object sender, EventArgs e)
@@ -115,19 +125,17 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
             //if (this.capDoResume == -1) return;
             GetCapDo();
+
             LuuTienTrinhGamme.LoadScore(user.username);
             DemThoiGianChoi.isResume = true;
             GameLogic.resumeBom = true;
-            resumeGame = new PlayGame(user.username, this.capDoResume);
+            resumeGame = new PlayGame(user.username, this.capDoResume, this);
             ResumeGame(out resumeGame);
             resumeGame.flagCount = this.countFlag;
             resumeGame.CapNhapSoCo();
 
             this.Hide();
             resumeGame.ShowDialog();
-            this.Close();
-            
-
         }
     }
 }

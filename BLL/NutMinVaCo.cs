@@ -31,13 +31,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public User user = new User();
         public ThangThuaGame thangThuaGame;
 
-        public NutMinVaCo(int dong, int cot, PlayGame playGame, User user)
+        public NutMinVaCo(int dong, int cot, PlayGame playGame, User user, ChonCapDo chonCapDo)
         {
             this.d = dong;
             this.c = cot;
             this.playGame = playGame;
             this.user = user;
-            thangThuaGame = new ThangThuaGame(user);
+            thangThuaGame = new ThangThuaGame(user, chonCapDo);
             MouseClickControl();
         }
         public void MouseClickControl()
@@ -94,7 +94,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             if (clicked == true || countMinAround > 0) return;
             clicked = true;
             VeNutKhongCoMin();
-            playGame.TinhDiem();
+            
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
@@ -119,9 +119,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void VeMinNo()
         {
             clicked = true;
-            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
-            //this.BackgroundImageLayout = ImageLayout.Zoom;
-            this.Text = "b";
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
+            this.BackgroundImageLayout = ImageLayout.Zoom;
+            //this.Text = "b";
             
         }
         public void Open()
@@ -179,9 +179,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             {
                 if (!nut.clicked) return;// Da click het cac nut
             }
-            //nếu các nút đã được click hết thì thắng và lưu thời gian vào file
-            playGame.demtg.StopTimerAndSave();
+            LuuTienTrinhGamme.SaveScore(user.username, playGame.score);
+
             thangThuaGame.ThangTroChoi(playGame);
+            
         }
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)
