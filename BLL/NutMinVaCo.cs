@@ -39,8 +39,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             this.playGame = playGame;
             this.user = user;
             thangThuaGame = new ThangThuaGame(user);
+            MouseClickControl();
+        }
+        public void MouseClickControl()
+        {
             this.MouseClick += new MouseEventHandler(NutMin_MouseLeft);
             this.MouseDown += new MouseEventHandler(NutCo_MouseRight);
+            
         }
         public void SoMin()
         {
@@ -128,7 +133,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         }
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
-        { 
+        {
+            
+
             // Chỉ khi bắt đầu click vào nút mới bắt đầu tính thời gian chạy
             if (!playGame.demtg.BatDau)
             {
@@ -159,6 +166,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                         break;
                 }
             }
+
+            //LuuTienTrinhGamme.SaveTienTrinhGame(user.username, this.playGame.MangNut, this.playGame.capDo);
             this.KiemTraChienThang();
         }
 
@@ -175,6 +184,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)
         {
+            
             if (clicked == true) return;
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
@@ -194,6 +204,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     playGame.DecreaseFlagCount();
                 }
             }
+            
         }
         public void CamCo()
         {

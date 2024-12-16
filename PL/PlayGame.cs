@@ -37,6 +37,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             user.username = taiKhoan;
             InitializeComponent();
+
+            CapNhapSoCo();
             //txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
             //VeBanCo();
@@ -56,9 +58,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
             gameLogic.TaoBanCo();
             HienThiMin();
-            CapNhapSoCo();
+            //CapNhapSoCo();
         }
-        private void CapNhapSoCo()
+        public void CapNhapSoCo()
         {
             txtFlagCount.Text = "Số cờ: " + flagCount.ToString();
         }
@@ -186,7 +188,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-            if (!isPaused)
+            isPaused = true;
+            if (isPaused == true)
             {
                 LuuTienTrinhGamme.SaveTienTrinhGame(user.username, MangNut, capDo);
                 isPaused = true;
@@ -200,12 +203,21 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnResume_Click(object sender, EventArgs e)
         {
-            foreach (var nut in MangNut)
+            isPaused = false;
+            if(isPaused == false)
             {
-                nut.Enabled = true;
-            }
-
+                foreach (var nut in MangNut)
+                {
+                    nut.Enabled = true;
+                    demtg.CountineTimer();
+                }
+            } 
         }
-        
+
+        private void PlayGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            demtg.StopTimerAndSave();
+            LuuTienTrinhGamme.SaveTienTrinhGame(user.username, this.MangNut, this.capDo);
+        }
     }
 }

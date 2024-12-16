@@ -18,6 +18,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
     public partial class ChonCapDo : Form
     {
         public int capDoResume = -1;
+        public int countFlag = 0;
 
         public User user = new User();
         public PlayGame resumeGame;
@@ -25,7 +26,12 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             this.InitializeComponent();
             this.user = user;
-            
+            GetCapDo();
+            if (this.capDoResume == -1)
+            {
+                this.Controls.Remove(btnResume); // Xoá button khỏi form
+                return; // Dừng thực hiện phương thức nếu cần
+            }
         }
         public void GetCapDo()
         {
@@ -60,11 +66,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                     }
                     if (playGame.MangNut[i, j].isFlagged)
                     {
+                        this.countFlag++;
                         playGame.MangNut[i, j].CamCo();
                     }
                 }
             }
-
         }
         private void MoveToPlayGame(int capDo)
         {
@@ -107,12 +113,14 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void btnResume_Click(object sender, EventArgs e)
         {
 
-            //if (this.capDoResume == -1) return;
-            this.Hide();
-            GetCapDo();
+            DemThoiGianChoi.isResume = true;
             GameLogic.resumeBom = true;
             resumeGame = new PlayGame(user.username, this.capDoResume);
             ResumeGame(out resumeGame);
+            resumeGame.flagCount = this.countFlag;
+            resumeGame.CapNhapSoCo();
+
+            this.Hide();
             resumeGame.ShowDialog();
             this.Close();
 

@@ -105,7 +105,7 @@
             this.Controls.Add(this.lblTuaDe);
             this.Name = "TrangChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Trang chủ";
             this.ResumeLayout(false);
             this.PerformLayout();
 

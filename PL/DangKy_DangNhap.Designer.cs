@@ -44,9 +44,10 @@
             this.lblTaiKhoan.BackColor = System.Drawing.Color.Transparent;
             this.lblTaiKhoan.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblTaiKhoan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTaiKhoan.Location = new System.Drawing.Point(139, 138);
+            this.lblTaiKhoan.Location = new System.Drawing.Point(104, 112);
+            this.lblTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTaiKhoan.Name = "lblTaiKhoan";
-            this.lblTaiKhoan.Size = new System.Drawing.Size(109, 28);
+            this.lblTaiKhoan.Size = new System.Drawing.Size(86, 21);
             this.lblTaiKhoan.TabIndex = 0;
             this.lblTaiKhoan.Text = "Tài khoản";
             // 
@@ -56,37 +57,38 @@
             this.lblMatKhau.BackColor = System.Drawing.Color.Transparent;
             this.lblMatKhau.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatKhau.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMatKhau.Location = new System.Drawing.Point(139, 194);
+            this.lblMatKhau.Location = new System.Drawing.Point(104, 158);
+            this.lblMatKhau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(105, 28);
+            this.lblMatKhau.Size = new System.Drawing.Size(84, 21);
             this.lblMatKhau.TabIndex = 2;
             this.lblMatKhau.Text = "Mật khẩu";
             this.lblMatKhau.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Location = new System.Drawing.Point(254, 144);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(190, 117);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(353, 22);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(266, 20);
             this.txtTaiKhoan.TabIndex = 3;
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(254, 201);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMatKhau.Location = new System.Drawing.Point(190, 163);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(353, 22);
+            this.txtMatKhau.Size = new System.Drawing.Size(266, 20);
             this.txtMatKhau.TabIndex = 4;
             // 
             // btnDangKy
             // 
             this.btnDangKy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDangKy.Location = new System.Drawing.Point(314, 277);
-            this.btnDangKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDangKy.Location = new System.Drawing.Point(236, 225);
+            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(162, 81);
+            this.btnDangKy.Size = new System.Drawing.Size(122, 66);
             this.btnDangKy.TabIndex = 5;
             this.btnDangKy.Text = "Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = true;
@@ -95,10 +97,10 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDangNhap.Location = new System.Drawing.Point(101, 277);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDangNhap.Location = new System.Drawing.Point(76, 225);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(162, 81);
+            this.btnDangNhap.Size = new System.Drawing.Size(122, 66);
             this.btnDangNhap.TabIndex = 6;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -107,10 +109,9 @@
             // btnKhách
             // 
             this.btnKhách.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnKhách.Location = new System.Drawing.Point(522, 275);
-            this.btnKhách.Margin = new System.Windows.Forms.Padding(4);
+            this.btnKhách.Location = new System.Drawing.Point(392, 223);
             this.btnKhách.Name = "btnKhách";
-            this.btnKhách.Size = new System.Drawing.Size(153, 81);
+            this.btnKhách.Size = new System.Drawing.Size(115, 66);
             this.btnKhách.TabIndex = 7;
             this.btnKhách.Text = "Khách";
             this.btnKhách.UseVisualStyleBackColor = true;
@@ -119,10 +120,10 @@
             // DangKy_DangNhap
             // 
             this.AcceptButton = this.btnDangNhap;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(785, 449);
+            this.ClientSize = new System.Drawing.Size(589, 365);
             this.Controls.Add(this.btnKhách);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnDangKy);
@@ -130,9 +131,10 @@
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.lblMatKhau);
             this.Controls.Add(this.lblTaiKhoan);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DangKy_DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Đăng nhập";
             this.ResumeLayout(false);
             this.PerformLayout();
 
