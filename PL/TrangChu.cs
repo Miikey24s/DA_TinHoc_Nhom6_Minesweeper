@@ -25,7 +25,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                 this.user.username = "Khách";
             }
             lblPlayerName.Text = this.user.username;
-            btnScore.Text = "Điểm: " + LuuTienTrinhGamme.LoadScore(this.user.username).ToString();
+            //btnScore.Text = "Điểm: " + LuuTienTrinhGamme.LoadScore(this.user.username).ToString();
         }
         private void btnBatDau_Click(object sender, EventArgs e)
         {
