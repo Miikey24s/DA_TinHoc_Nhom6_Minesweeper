@@ -31,6 +31,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private readonly GameLogic gameLogic;
         public int flagCount = 0;
         public bool isPaused = false;
+        public int score = 0;
 
         Panel boardPanel;
         public PlayGame(string taiKhoan, int capDo)
@@ -40,7 +41,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             //txtPlayerName.Text = TKDangChoi;
             this.capDo = capDo;
             //VeBanCo();
-            demtg = new DemThoiGianChoi(txtTime, user.username);
+            demtg = new DemThoiGianChoi(txtTime, user.username, this);
             this.capDo = capDo;
             quanLyCapDo.sizeBanCo = this.GetSizeBanCo();
             bom.bomCount = this.GetSizeBomb();
@@ -51,12 +52,18 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             {
                 MangNut = this.MangNut
             };
-
-
-
             gameLogic.TaoBanCo();
             HienThiMin();
             CapNhapSoCo();
+        }
+        public void Diem()
+        {
+            txtScore.Text = "Điểm: " + score.ToString();
+        }
+        public void TinhDiem()
+        {
+            score += 10;
+            Diem();
         }
         private void CapNhapSoCo()
         {
@@ -149,7 +156,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         }
         public void CreateBoardPanel()
         {
-            this.boardPanel = new DoubleBufferedPanel
+            this.boardPanel = new Panel
             {
                 Size = new Size(quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize, quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize),
                 Location = new Point(0, 0),
@@ -206,6 +213,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             }
 
         }
-        
+
+        private void PlayGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LuuTienTrinhGamme.SaveScore(user.username, score);
+        }
     }
 }

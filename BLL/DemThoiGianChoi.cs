@@ -15,6 +15,7 @@ using DA_TinHoc_Nhom6_Minesweeper.BLL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Reflection.Emit;
 using DA_TinHoc_Nhom6_Minesweeper.DAL;
+using DA_TinHoc_Nhom6_Minesweeper.PL;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
@@ -26,8 +27,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         private System.Windows.Forms.TextBox txtTime;
         public int h, m, s;
         public bool BatDau = false;
-        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi)
+        private PlayGame PlayGame;
+        private int point = 0;
+        public DemThoiGianChoi(System.Windows.Forms.TextBox txtTime,string TKDangChoi,PlayGame playGame)
         {
+            this.PlayGame=playGame;
             this.txtTime = txtTime;
             this.username = TKDangChoi;
             h = m = s = 0;
@@ -53,24 +57,23 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             GhiThoiGianChoi(username, h, m, s);
             BatDau = false;
         }
-
         public void CapNhatTG(object sender, ElapsedEventArgs e) {
 
             txtTime.Invoke(new Action(() =>
             {
-                s += 1;
-                if (s == 60)
-                {
-                    s = 0;
-                    m += 1;
-                    if (m == 60)
+                    s += 1;
+                    if (s == 60)
                     {
-                        m = 0;
-                        h += 1;
+                        s = 0;
+                        m += 1;
+                        if (m == 60)
+                        {
+                            m = 0;
+                            h += 1;
+                        }
                     }
-                }
-                txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
-            }));
+                    txtTime.Text = $"{h:D2}:{m:D2}:{s:D2}";
+           }));
         }
 
         private void GhiThoiGianChoi(string TKDangChoi, int h, int m, int s)

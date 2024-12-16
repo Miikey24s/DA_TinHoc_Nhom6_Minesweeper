@@ -38,7 +38,33 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 }
             }
         }
+        public static void SaveScore(string username, int score)
+        {
+            using (StreamWriter writer = new StreamWriter($"{username}_Score_Save.txt"))
+            {
+                writer.WriteLine($"UserName: {username}");
+                writer.WriteLine($"{score}");
 
+
+            }
+        }
+        public static int LoadScore(string username)
+        {
+            if (!File.Exists($"{username}_Score_Save.txt"))
+            {
+                return 0;
+            }
+            int score = -1;
+
+            using (StreamReader reader = new StreamReader($"{username}_Score_Save.txt"))
+            {
+                string userName = reader.ReadLine().Split(':')[1].Trim();
+                score = int.Parse(reader.ReadLine().Split(' ')[0]);
+
+            }
+
+            return score;
+        }
         public static (string, int) LoadTienTrinhGame(string username, User user)
         {
             if (!File.Exists($"{username}_game_Save.txt"))
@@ -56,33 +82,6 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                 string userName = reader.ReadLine().Split(':')[1].Trim();
                 capDo = int.Parse(reader.ReadLine().Split(' ')[0]);
                 timePlayed = "";
-
-
-                //string line;
-                //while ((line = reader.ReadLine()) != null)
-                //{
-                //    string[] values = line.Split(' ');
-                   
-                    
-                //    int d = int.Parse(values[0]);// Đang bị lỗi ở đây
-                //    int c = int.Parse(values[1]);
-                //    bool isMin = bool.Parse(values[2]);
-                //    bool isFlagged = bool.Parse(values[3]);
-                //    bool clicked = bool.Parse(values[4]);
-                //    int countMinAround = int.Parse(values[5]);
-                    
-
-                //    NutMinVaCo nut = new NutMinVaCo(d, c, playGame, user)
-                //    {
-                //        isMin = isMin,
-                //        isFlagged = isFlagged,
-                //        clicked = clicked,
-                //        countMinAround = countMinAround
-                //    };
-                //    playGame.MangNut[d, c] = nut;
-
-                //}
-                //MessageBox.Show(MangNut[0, 0].isFlagged.ToString());
 
             }
             

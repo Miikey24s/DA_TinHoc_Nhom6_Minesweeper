@@ -110,11 +110,13 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             //if (this.capDoResume == -1) return;
             this.Hide();
             GetCapDo();
+            LuuTienTrinhGamme.LoadScore(user.username);
             GameLogic.resumeBom = true;
             resumeGame = new PlayGame(user.username, this.capDoResume);
             ResumeGame(out resumeGame);
             resumeGame.ShowDialog();
             this.Close();
+            
 
         }
     }
