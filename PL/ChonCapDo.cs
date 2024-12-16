@@ -113,6 +113,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         private void btnResume_Click(object sender, EventArgs e)
         {
 
+            //if (this.capDoResume == -1) return;
+            GetCapDo();
+            LuuTienTrinhGamme.LoadScore(user.username);
             DemThoiGianChoi.isResume = true;
             GameLogic.resumeBom = true;
             resumeGame = new PlayGame(user.username, this.capDoResume);
@@ -123,6 +126,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             this.Hide();
             resumeGame.ShowDialog();
             this.Close();
+            
 
         }
     }

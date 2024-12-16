@@ -21,11 +21,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public NutMinVaCo[,] MangNut;
         public int capDo;
         public static bool resumeBom = false;
+
         public GameLogic(int capDo)
         {
 
             this.capDo = capDo;
-
         }
         public void TaoBanCo()
         {

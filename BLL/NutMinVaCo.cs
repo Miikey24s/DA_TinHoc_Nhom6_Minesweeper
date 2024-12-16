@@ -28,10 +28,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public int trangThai = -1; // -1: trạng thái chưa mở, 0: là số, 1: là cờ
         public int d, c;
         public static NutMinVaCo[,] mangNut;
-        public int flagCount = 0;
         public User user = new User();
         public ThangThuaGame thangThuaGame;
-        
+
         public NutMinVaCo(int dong, int cot, PlayGame playGame, User user)
         {
             this.d = dong;
@@ -52,6 +51,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             if (countMinAround > 0)
             {
                 VeNutSo();
+                playGame.TinhDiem();
             }
             else
             {
@@ -94,7 +94,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             if (clicked == true || countMinAround > 0) return;
             clicked = true;
             VeNutKhongCoMin();
-
+            playGame.TinhDiem();
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
@@ -110,6 +110,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     if (!mangNutMoi.clicked && !mangNutMoi.isFlagged)
                     {
                         mangNutMoi.Open(); // Gọi hàm Open để xử lý các ô kế bên
+                        playGame.TinhDiem();
                     }
                 }
             }
@@ -118,8 +119,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void VeMinNo()
         {
             clicked = true;
-            this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
-            this.BackgroundImageLayout = ImageLayout.Zoom;
+            //this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\bomb.png");
+            //this.BackgroundImageLayout = ImageLayout.Zoom;
+            this.Text = "b";
             
         }
         public void Open()

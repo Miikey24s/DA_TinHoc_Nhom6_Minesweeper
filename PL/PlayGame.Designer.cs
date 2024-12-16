@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayGame));
             this.thongTinPanel = new DA_TinHoc_Nhom6_Minesweeper.BLL.DoubleBufferedPanel();
+            this.txtScore = new System.Windows.Forms.TextBox();
             this.btnResume = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.txtPlayerName = new System.Windows.Forms.TextBox();
@@ -41,6 +42,7 @@
             // 
             // thongTinPanel
             // 
+            this.thongTinPanel.Controls.Add(this.txtScore);
             this.thongTinPanel.Controls.Add(this.btnResume);
             this.thongTinPanel.Controls.Add(this.btnPause);
             this.thongTinPanel.Controls.Add(this.txtPlayerName);
@@ -52,6 +54,18 @@
             this.thongTinPanel.Name = "thongTinPanel";
             this.thongTinPanel.Size = new System.Drawing.Size(204, 127);
             this.thongTinPanel.TabIndex = 3;
+            // 
+            // txtScore
+            // 
+            this.txtScore.Enabled = false;
+            this.txtScore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.txtScore.Location = new System.Drawing.Point(2, 47);
+            this.txtScore.Margin = new System.Windows.Forms.Padding(2);
+            this.txtScore.Multiline = true;
+            this.txtScore.Name = "txtScore";
+            this.txtScore.ReadOnly = true;
+            this.txtScore.Size = new System.Drawing.Size(117, 40);
+            this.txtScore.TabIndex = 6;
             // 
             // btnResume
             // 
@@ -151,5 +165,6 @@
         private System.Windows.Forms.TextBox txtFlagCount;
         private System.Windows.Forms.Button btnResume;
         private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.TextBox txtScore;
     }
 }
