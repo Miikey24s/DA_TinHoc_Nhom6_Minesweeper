@@ -21,6 +21,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 {
     public partial class PlayGame : Form
     {
+        string timePlayed = "";
         public User user = new User();
         public QuanLyCapDo quanLyCapDo = new QuanLyCapDo();
         public Bom bom = new Bom();
@@ -29,9 +30,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public int capDo;
         private readonly GameLogic gameLogic;
         public int flagCount = 0;
-        
+        public bool isPaused = false;
+
         Panel boardPanel;
-        public PlayGame(string taiKhoan,int capDo)
+        public PlayGame(string taiKhoan, int capDo)
         {
             user.username = taiKhoan;
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                 MangNut = this.MangNut
             };
 
-            
+
 
             gameLogic.TaoBanCo();
             //HienThiMin();
@@ -66,7 +68,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             flagCount++;
             CapNhapSoCo();
-            
+
         }
 
         // Method to decrease flag count
@@ -74,7 +76,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         {
             flagCount--;
             CapNhapSoCo();
-            
+
         }
         public void DoubleBuffering()
         {
@@ -94,7 +96,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             txtBombCount.Text = "Bomb: " + bom.bomCount.ToString();
             thongTinPanel.Location = new Point(quanLyCapDo.sizeBanCo * quanLyCapDo.buttonSize + 10, 0);
 
-            
+
             int width = this.boardPanel.Width + this.thongTinPanel.Width + 50;//chieu ngang
             int height = this.boardPanel.Height + 50;//chieu doc
             this.Size = new Size(width, height);
@@ -103,7 +105,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
         public void VeBanCo()
         {
             CreateBoardPanel();
-            
+
         }
         public void HienThiMin()
         {
@@ -163,7 +165,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         public void VeOCo()
         {
-           
+
             MangNut = new NutMinVaCo[quanLyCapDo.sizeBanCo, quanLyCapDo.sizeBanCo];
             NutMinVaCo.mangNut = MangNut;
             // khoi tao san mang nut
@@ -175,10 +177,73 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
                     CreateButton(dong, cot);
                 }
             }
-            
+
         }
         private void txtPlayerName_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+
+
+            if (!isPaused)
+            {
+                LuuTienTrinhGamme.SaveTienTrinhGame(user.username, MangNut);
+                isPaused = true;
+                demtg.StopTimerNoSave();
+                foreach (var nut in MangNut)
+                {
+                    nut.Enabled = false;
+                }
+            }
+        }
+
+        private void btnResume_Click(object sender, EventArgs e)
+        {
+            if (isPaused)
+            {
+                string[] files = Directory.GetFiles(Application.StartupPath, $"{user.username}_Game_Save.txt");
+                var (loadgameState,loadTime) = LuuTienTrinhGamme.LoadTienTrinhGame(user.username, MangNut.GetLength(0), MangNut.GetLength(1), this);
+                if (loadgameState != null)
+                {
+                    MangNut = loadgameState;
+                    loadTime = "";
+                    ResumeGame(MangNut);
+                    isPaused = false;
+                    foreach (var nut in MangNut)
+                    {
+                        nut.Enabled = true;
+                    }
+                    demtg.StartTimer();
+                    VeBanCo();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy trạng thái trò chơi đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+        }
+        private void ResumeGame(NutMinVaCo[,] MangNut)
+        {
+            for (int i = 0; i < MangNut.GetLength(0); i++)
+            {
+                for (int j = 0; j < MangNut.GetLength(1); j++)
+                {
+                    NutMinVaCo nut = MangNut[i, j];
+                    nut.Enabled = true;
+                    if (nut.clicked)
+                    {
+                        nut.Open();
+                    }
+                    if (nut.isFlagged)
+                    {
+                        nut.CamCo();
+                    }
+                }
+            }
 
         }
     }
