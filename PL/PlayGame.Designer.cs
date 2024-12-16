@@ -129,10 +129,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1069, 508);
             this.Controls.Add(this.thongTinPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlayGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PlayGame";
+            this.Text = "6";
             this.thongTinPanel.ResumeLayout(false);
             this.thongTinPanel.PerformLayout();
             this.ResumeLayout(false);

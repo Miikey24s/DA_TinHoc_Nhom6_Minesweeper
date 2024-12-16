@@ -20,7 +20,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         Bom bom = new Bom();
         public NutMinVaCo[,] MangNut;
         public int capDo;
-
+        public static bool resumeBom = false;
         public GameLogic(int capDo)
         {
 
@@ -48,47 +48,10 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             bom.ChonSoBombs(this.capDo);
             return bom.GetBombs();
         }
-        //public void CreateButton(int i, int j)
-        //{
-        //    MangNut[i, j] = new NutMinVaCo(i, j, this)
-        //    {
-        //        trangThai = 0,
-        //        Location = new System.Drawing.Point(i * 30, j * 30),
-        //        Size = new System.Drawing.Size(30, 30)
-        //    };
-        //    this.Controls.Add(MangNut[i, j]);
-        //}
-
-        //public void VeOCo()
-        //{
-        //    MangNut = new NutMinVaCo[this.GetSizeBanCo(), this.GetSizeBanCo()];
-        //    NutMinVaCo.mangNut = MangNut;
-        //    for (int i = 0; i < this.GetSizeBanCo(); i++)
-        //    {
-        //        for (int j = 0; j < this.GetSizeBanCo(); j++)
-        //        {
-        //            CreateButton(i, j);
-        //        }
-        //    }
-        //}
-        //public void DatMinNgauNhien()
-        //{
-        //    int count = 0;
-        //    while (count < this.GetSizeBomb())
-        //    {
-        //        int index = new Random().Next(GetSizeBanCo() * GetSizeBanCo());
-        //        int r = index / GetSizeBanCo();
-        //        int c = index % GetSizeBanCo();
-
-        //        if (!MangNut[r, c].isMin)
-        //        {
-        //            MangNut[r, c].isMin = true;
-        //            count++;
-        //        }
-        //    }
-        //}
+        
         public void DatMinNgauNhien()
         {
+            if (resumeBom == true) return;
             int count = 0;
             Random rand = new Random(DateTime.Now.Millisecond); // Dùng thời gian hiện tại làm hạt giống
 

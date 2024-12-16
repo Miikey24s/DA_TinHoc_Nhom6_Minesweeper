@@ -34,14 +34,16 @@
             this.btnTroLai = new System.Windows.Forms.Button();
             this.btnKho = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnResume = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDe
             // 
             this.btnDe.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDe.Location = new System.Drawing.Point(341, 160);
+            this.btnDe.Location = new System.Drawing.Point(455, 197);
+            this.btnDe.Margin = new System.Windows.Forms.Padding(4);
             this.btnDe.Name = "btnDe";
-            this.btnDe.Size = new System.Drawing.Size(98, 55);
+            this.btnDe.Size = new System.Drawing.Size(131, 68);
             this.btnDe.TabIndex = 1;
             this.btnDe.Text = "Dễ";
             this.btnDe.UseVisualStyleBackColor = true;
@@ -50,9 +52,10 @@
             // btnVua
             // 
             this.btnVua.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVua.Location = new System.Drawing.Point(341, 247);
+            this.btnVua.Location = new System.Drawing.Point(455, 304);
+            this.btnVua.Margin = new System.Windows.Forms.Padding(4);
             this.btnVua.Name = "btnVua";
-            this.btnVua.Size = new System.Drawing.Size(98, 55);
+            this.btnVua.Size = new System.Drawing.Size(131, 68);
             this.btnVua.TabIndex = 2;
             this.btnVua.Text = "Vừa";
             this.btnVua.UseVisualStyleBackColor = true;
@@ -61,9 +64,10 @@
             // btnTroLai
             // 
             this.btnTroLai.Image = global::DA_TinHoc_Nhom6_Minesweeper.Properties.Resources.icons8_back_32;
-            this.btnTroLai.Location = new System.Drawing.Point(10, 11);
+            this.btnTroLai.Location = new System.Drawing.Point(13, 14);
+            this.btnTroLai.Margin = new System.Windows.Forms.Padding(4);
             this.btnTroLai.Name = "btnTroLai";
-            this.btnTroLai.Size = new System.Drawing.Size(55, 33);
+            this.btnTroLai.Size = new System.Drawing.Size(73, 41);
             this.btnTroLai.TabIndex = 4;
             this.btnTroLai.UseVisualStyleBackColor = true;
             this.btnTroLai.Click += new System.EventHandler(this.btnTroLai_Click);
@@ -72,9 +76,10 @@
             // 
             this.btnKho.AutoSize = true;
             this.btnKho.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnKho.Location = new System.Drawing.Point(341, 334);
+            this.btnKho.Location = new System.Drawing.Point(455, 411);
+            this.btnKho.Margin = new System.Windows.Forms.Padding(4);
             this.btnKho.Name = "btnKho";
-            this.btnKho.Size = new System.Drawing.Size(98, 55);
+            this.btnKho.Size = new System.Drawing.Size(131, 68);
             this.btnKho.TabIndex = 5;
             this.btnKho.Text = "Khó";
             this.btnKho.UseVisualStyleBackColor = true;
@@ -86,27 +91,40 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(226, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(301, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 65);
+            this.label1.Size = new System.Drawing.Size(449, 81);
             this.label1.TabIndex = 6;
             this.label1.Text = "CHỌN CẤP ĐỘ";
             // 
+            // btnResume
+            // 
+            this.btnResume.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnResume.Location = new System.Drawing.Point(619, 304);
+            this.btnResume.Margin = new System.Windows.Forms.Padding(4);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(166, 68);
+            this.btnResume.TabIndex = 7;
+            this.btnResume.Text = "Resume";
+            this.btnResume.UseVisualStyleBackColor = true;
+            this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
+            // 
             // ChonCapDo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(1045, 567);
+            this.Controls.Add(this.btnResume);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKho);
             this.Controls.Add(this.btnTroLai);
             this.Controls.Add(this.btnVua);
             this.Controls.Add(this.btnDe);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChonCapDo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ten";
+            this.Text = "6";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +136,6 @@
         private System.Windows.Forms.Button btnTroLai;
         private System.Windows.Forms.Button btnKho;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnResume;
     }
 }

@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using DA_TinHoc_Nhom6_Minesweeper.PL;
 using DA_TinHoc_Nhom6_Minesweeper.DAL;
 using System.Timers;
+using System.Data.SqlClient;
 
 namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 {
@@ -19,6 +20,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         //private string taiKhoan = "macDinh";
         private PlayGame playGame;
         public bool clicked = false;
+        public bool isDeQuy = false;
         public bool isMin = false;
         public bool isFlagged = false;
         private bool isOpen = false;
@@ -40,22 +42,31 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             this.MouseClick += new MouseEventHandler(NutMin_MouseLeft);
             this.MouseDown += new MouseEventHandler(NutCo_MouseRight);
         }
-
         public void SoMin()
         {
             if (countMinAround > 0)
             {
-                this.Text = countMinAround.ToString();
-                clicked = true;
-                this.BackColor = Color.White;
-                this.ForeColor = ToMauChoSo(countMinAround);
-                this.Font = new Font(this.Font.FontFamily, 15, FontStyle.Bold);
-                this.TextAlign = ContentAlignment.MiddleCenter;
+                VeNutSo();
             }
             else
             {
+                
                 KhongCoMin();
             }
+        }
+        public void VeNutSo()
+        {
+            this.Text = countMinAround.ToString();
+            clicked = true;
+            this.BackColor = Color.White;
+            this.ForeColor = ToMauChoSo(countMinAround);
+            this.Font = new Font(this.Font.FontFamily, 15, FontStyle.Bold);
+            this.TextAlign = ContentAlignment.MiddleCenter;
+        }
+        public void VeNutKhongCoMin()
+        {
+            if(countMinAround == 0)
+                this.BackColor = Color.Gray;
         }
         public Color ToMauChoSo(int number)
         {
@@ -77,7 +88,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
             //resume load lai mang ( co cac nut da clicked )
             if (clicked == true || countMinAround > 0) return;
             clicked = true;
-            this.BackColor = Color.Gray;
+            VeNutKhongCoMin();
 
             for (int i = -1; i <= 1; i++)
             {
@@ -164,6 +175,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
 
         private void NutCo_MouseRight(object sender, MouseEventArgs e)
         {
+            if (clicked == true) return;
             if (trangThai == -1) return;
             if (e.Button == MouseButtons.Right)
             {
@@ -172,10 +184,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
                     if (playGame.flagCount >= playGame.bom.bomCount) return;
                     CamCo();
                     isFlagged = true;
-                    
                     playGame.IncreaseFlagCount();
-                    
-                    
                 }
                 else
                 {
@@ -189,6 +198,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.BLL
         public void CamCo()
         {
             // Thêm hình ảnh cờ vào ô
+            
             this.BackgroundImage = Image.FromFile(Application.StartupPath + "\\Resources\\flag.png");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             //this.Text = "F";

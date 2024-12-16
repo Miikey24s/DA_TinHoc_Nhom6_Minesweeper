@@ -55,7 +55,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
 
             gameLogic.TaoBanCo();
-            //HienThiMin();
+            HienThiMin();
             CapNhapSoCo();
         }
         private void CapNhapSoCo()
@@ -186,11 +186,9 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-
-
             if (!isPaused)
             {
-                LuuTienTrinhGamme.SaveTienTrinhGame(user.username, MangNut);
+                LuuTienTrinhGamme.SaveTienTrinhGame(user.username, MangNut, capDo);
                 isPaused = true;
                 demtg.StopTimerNoSave();
                 foreach (var nut in MangNut)
@@ -202,49 +200,12 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
 
         private void btnResume_Click(object sender, EventArgs e)
         {
-            if (isPaused)
+            foreach (var nut in MangNut)
             {
-                string[] files = Directory.GetFiles(Application.StartupPath, $"{user.username}_Game_Save.txt");
-                var (loadgameState,loadTime) = LuuTienTrinhGamme.LoadTienTrinhGame(user.username, MangNut.GetLength(0), MangNut.GetLength(1), this);
-                if (loadgameState != null)
-                {
-                    MangNut = loadgameState;
-                    loadTime = "";
-                    ResumeGame(MangNut);
-                    isPaused = false;
-                    foreach (var nut in MangNut)
-                    {
-                        nut.Enabled = true;
-                    }
-                    demtg.StartTimer();
-                    VeBanCo();
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy trạng thái trò chơi đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-            }
-        }
-        private void ResumeGame(NutMinVaCo[,] MangNut)
-        {
-            for (int i = 0; i < MangNut.GetLength(0); i++)
-            {
-                for (int j = 0; j < MangNut.GetLength(1); j++)
-                {
-                    NutMinVaCo nut = MangNut[i, j];
-                    nut.Enabled = true;
-                    if (nut.clicked)
-                    {
-                        nut.Open();
-                    }
-                    if (nut.isFlagged)
-                    {
-                        nut.CamCo();
-                    }
-                }
+                nut.Enabled = true;
             }
 
         }
+        
     }
 }

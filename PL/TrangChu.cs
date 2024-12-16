@@ -31,8 +31,11 @@ namespace DA_TinHoc_Nhom6_Minesweeper.PL
             ChonCapDo chonCapDo = new ChonCapDo(user);
             chonCapDo.ShowDialog();
             this.Close();
-        }
 
+
+            
+        }
+        
         private void btnHuongDan_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hướng dẫn chơi DÒ MÌN ĐÊ!!!:\n" +
