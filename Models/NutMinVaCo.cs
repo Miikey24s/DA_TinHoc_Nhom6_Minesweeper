@@ -134,7 +134,8 @@ namespace DA_TinHoc_Nhom6_Minesweeper
 
         private void NutMin_MouseLeft(object sender, System.EventArgs e)
         {
-            
+            // Nếu đã đặt cờ thì không cho click
+            if (isFlagged) return;
 
             // Chỉ khi bắt đầu click vào nút mới bắt đầu tính thời gian chạy
             if (!playGame.demtg.BatDau)
