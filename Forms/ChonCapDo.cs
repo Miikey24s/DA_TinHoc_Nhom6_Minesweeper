@@ -58,7 +58,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
             playGame.demtg.StartTimer();
 
 
-            playGame.HienThiMin();
+            // playGame.HienThiMin();
         }
         public void LoadResumeGame(ref PlayGame playGame)
         {

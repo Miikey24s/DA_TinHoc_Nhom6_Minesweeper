@@ -54,7 +54,7 @@ namespace DA_TinHoc_Nhom6_Minesweeper
                 MangNut = this.MangNut
             };
             gameLogic.TaoBanCo();
-            HienThiMin();
+            // HienThiMin();
             
             score = LuuTienTrinhGamme.LoadScore(taiKhoan);
             Diem();
