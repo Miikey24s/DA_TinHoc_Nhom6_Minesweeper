@@ -71,4 +71,4 @@ Trò chơi Dò Mìn (Minesweeper) phát triển bằng C# WinForms, đồ án m�
 
 ## Nhóm phát triển
 
-Đồ án Tin học cơ sở — Nhóm 6
+Đồ án Tin học — Nhóm 6
