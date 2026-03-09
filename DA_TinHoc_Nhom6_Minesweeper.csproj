@@ -46,58 +46,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bom.cs" />
-    <Compile Include="DemThoiGianChoi.cs" />
-    <Compile Include="DoubleBufferedPanel.cs">
+    <!-- Models -->
+    <Compile Include="Models\Bom.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\NutMinVaCo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameLogic.cs" />
-    <Compile Include="LuuTienTrinhGame.cs" />
-    <Compile Include="ThangThuaGame.cs" />
-    <Compile Include="FileHandler.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="ChonCapDo.cs">
+    <Compile Include="Models\QuanLyCapDo.cs" />
+    <!-- Services -->
+    <Compile Include="Services\GameLogic.cs" />
+    <Compile Include="Services\DemThoiGianChoi.cs" />
+    <Compile Include="Services\ThangThuaGame.cs" />
+    <Compile Include="Services\LuuTienTrinhGame.cs" />
+    <Compile Include="Services\FileHandler.cs" />
+    <!-- Controls -->
+    <Compile Include="Controls\DoubleBufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <!-- Forms -->
+    <Compile Include="Forms\TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChonCapDo.Designer.cs">
-      <DependentUpon>ChonCapDo.cs</DependentUpon>
+    <Compile Include="Forms\TrangChu.Designer.cs">
+      <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyCapDo.cs" />
-    <Compile Include="DangKy_DangNhap.cs">
+    <Compile Include="Forms\DangKy_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DangKy_DangNhap.Designer.cs">
+    <Compile Include="Forms\DangKy_DangNhap.Designer.cs">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="NutMinVaCo.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Forms\ChonCapDo.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ChonCapDo.Designer.cs">
+      <DependentUpon>ChonCapDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlayGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayGame.Designer.cs">
+      <DependentUpon>PlayGame.cs</DependentUpon>
+    </Compile>
+    <!-- Program entry point -->
+    <Compile Include="Program.cs" />
+    <!-- Properties -->
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TrangChu.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TrangChu.Designer.cs">
+    <!-- Embedded Resources -->
+    <EmbeddedResource Include="Forms\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PlayGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlayGame.Designer.cs">
-      <DependentUpon>PlayGame.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChonCapDo.resx">
-      <DependentUpon>ChonCapDo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DangKy_DangNhap.resx">
+    <EmbeddedResource Include="Forms\DangKy_DangNhap.resx">
       <DependentUpon>DangKy_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayGame.resx">
+    <EmbeddedResource Include="Forms\ChonCapDo.resx">
+      <DependentUpon>ChonCapDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayGame.resx">
       <DependentUpon>PlayGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,18 +120,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TrangChu.resx">
-      <DependentUpon>TrangChu.cs</DependentUpon>
-    </EmbeddedResource>
+    <!-- Settings -->
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <!-- Data files -->
+    <None Include="Data\danhSachTK.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
